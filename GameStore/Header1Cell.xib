@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="Header1Cell" customModule="GameStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="212" height="71"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="212" height="71"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btX-cf-vlc">
+                        <rect key="frame" x="0.0" y="0.0" width="212" height="71"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPy-P3-pKW">
+                                <rect key="frame" x="85.333333333333329" y="25.333333333333336" width="41.333333333333329" height="20.333333333333336"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xPy-P3-pKW" firstAttribute="centerY" secondItem="btX-cf-vlc" secondAttribute="centerY" id="T0W-pO-a8A"/>
+                            <constraint firstItem="xPy-P3-pKW" firstAttribute="centerX" secondItem="btX-cf-vlc" secondAttribute="centerX" id="yLO-kK-uom"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="btX-cf-vlc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DcZ-OD-EoH"/>
+                <constraint firstAttribute="trailing" secondItem="btX-cf-vlc" secondAttribute="trailing" id="S6E-p6-SCD"/>
+                <constraint firstAttribute="bottom" secondItem="btX-cf-vlc" secondAttribute="bottom" id="WIL-pn-k6Y"/>
+                <constraint firstItem="btX-cf-vlc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="afr-3o-Puw"/>
+            </constraints>
+            <size key="customSize" width="212" height="71"/>
+            <connections>
+                <outlet property="titleLabel" destination="xPy-P3-pKW" id="JeF-i6-3rI"/>
+                <outlet property="titleView" destination="btX-cf-vlc" id="gmk-CJ-Rye"/>
+            </connections>
+            <point key="canvasLocation" x="97.70992366412213" y="12.323943661971832"/>
+        </collectionViewCell>
+    </objects>
+</document>
