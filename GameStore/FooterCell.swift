@@ -11,6 +11,7 @@ class FooterCell: UICollectionViewCell {
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var titlePrice: UILabel!
+    @IBOutlet weak var discountPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,8 +19,9 @@ class FooterCell: UICollectionViewCell {
         titleView.layer.cornerRadius = 30
         titleImage.layer.cornerRadius = 30
         
-        let gradient = UIImage.gImage(frame: titleView.bounds, colours: [.cyan, .blue])
+        let gradient = UIImage.gImage(frame: titleView.bounds, colours: [.systemBlue, .blue])
         titleView.backgroundColor = UIColor(patternImage: gradient)
+        discountPrice.isHidden = true
     }
 
 }

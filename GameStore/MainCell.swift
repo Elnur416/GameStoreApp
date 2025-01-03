@@ -14,6 +14,7 @@ class MainCell: UICollectionViewCell {
     @IBOutlet weak var titleName: UILabel!
     @IBOutlet weak var titlePrice: UILabel!
     @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var discountPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,5 +24,7 @@ class MainCell: UICollectionViewCell {
         let gradient = UIImage.gImage(frame: cellTitle.bounds, colours: [.systemBlue, .blue])
         cellTitle.font = UIFont.boldSystemFont(ofSize: 35)
         cellTitle.textColor = UIColor(patternImage: gradient)
+        titleView.backgroundColor = .systemBlue
+        discountPrice.isHidden = true
     }
 }

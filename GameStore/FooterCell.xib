@@ -20,11 +20,18 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d3E-Ed-D1a">
                         <rect key="frame" x="0.0" y="0.0" width="195" height="219"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7" translatesAutoresizingMaskIntoConstraints="NO" id="VHt-Af-Rwc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="VHt-Af-Rwc">
                                 <rect key="frame" x="0.0" y="0.0" width="195" height="199"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-j7-Q1b">
-                                <rect key="frame" x="146.33333333333334" y="188" width="38.666666666666657" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyf-j7-Q1b">
+                                <rect key="frame" x="146.33333333333334" y="188.66666666666666" width="38.666666666666657" height="20.333333333333343"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fg8-di-fLf">
+                                <rect key="frame" x="117.33333333333331" y="163.33333333333334" width="67.666666666666686" height="20.333333333333343"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -33,9 +40,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fg8-di-fLf" secondAttribute="trailing" constant="10" id="ADV-kK-1EG"/>
                             <constraint firstItem="VHt-Af-Rwc" firstAttribute="leading" secondItem="d3E-Ed-D1a" secondAttribute="leading" id="Hmi-4c-yVo"/>
                             <constraint firstAttribute="trailing" secondItem="VHt-Af-Rwc" secondAttribute="trailing" id="JlL-Ai-6an"/>
                             <constraint firstAttribute="trailing" secondItem="wyf-j7-Q1b" secondAttribute="trailing" constant="10" id="KjB-0j-sd4"/>
+                            <constraint firstItem="wyf-j7-Q1b" firstAttribute="top" secondItem="fg8-di-fLf" secondAttribute="bottom" constant="5" id="ifZ-MO-dUl"/>
                             <constraint firstAttribute="bottom" secondItem="wyf-j7-Q1b" secondAttribute="bottom" constant="10" id="mYF-Aj-UkT"/>
                             <constraint firstItem="VHt-Af-Rwc" firstAttribute="top" secondItem="d3E-Ed-D1a" secondAttribute="top" id="wQl-JJ-8aE"/>
                             <constraint firstAttribute="bottom" secondItem="VHt-Af-Rwc" secondAttribute="bottom" constant="20" id="yRV-1R-pLy"/>
@@ -52,15 +61,16 @@
             </constraints>
             <size key="customSize" width="195" height="219"/>
             <connections>
+                <outlet property="discountPrice" destination="fg8-di-fLf" id="M3x-f1-Nxc"/>
                 <outlet property="titleImage" destination="VHt-Af-Rwc" id="skj-dz-750"/>
-                <outlet property="titlePrice" destination="wyf-j7-Q1b" id="xf8-Dd-hh2"/>
+                <outlet property="titlePrice" destination="wyf-j7-Q1b" id="nPc-Jy-MHC"/>
                 <outlet property="titleView" destination="d3E-Ed-D1a" id="u2D-WH-4Fg"/>
             </connections>
             <point key="canvasLocation" x="205.34351145038167" y="17.95774647887324"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="7" width="736" height="1117"/>
+        <image name="4" width="390" height="600"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

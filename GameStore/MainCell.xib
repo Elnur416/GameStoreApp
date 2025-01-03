@@ -32,7 +32,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94A-Ed-mHp">
                                 <rect key="frame" x="0.0" y="40" width="369" height="493"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="13" translatesAutoresizingMaskIntoConstraints="NO" id="D6o-6F-pmE">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="15" translatesAutoresizingMaskIntoConstraints="NO" id="D6o-6F-pmE">
                                         <rect key="frame" x="0.0" y="0.0" width="369" height="433"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pab-8N-gfk">
@@ -47,6 +47,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naM-b0-eH5">
+                                        <rect key="frame" x="281.33333333333331" y="426.66666666666669" width="67.666666666666686" height="21"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -58,6 +65,8 @@
                                     <constraint firstAttribute="trailing" secondItem="D6o-6F-pmE" secondAttribute="trailing" id="eP1-9t-GcI"/>
                                     <constraint firstItem="D6o-6F-pmE" firstAttribute="top" secondItem="94A-Ed-mHp" secondAttribute="top" id="jAd-Uv-i9Q"/>
                                     <constraint firstAttribute="bottom" secondItem="D6o-6F-pmE" secondAttribute="bottom" constant="60" id="mHJ-4L-lPq"/>
+                                    <constraint firstAttribute="trailing" secondItem="naM-b0-eH5" secondAttribute="trailing" constant="20" id="p4o-wC-gHR"/>
+                                    <constraint firstItem="hbb-xi-F42" firstAttribute="top" secondItem="naM-b0-eH5" secondAttribute="bottom" constant="5" id="xaM-GI-yFx"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -83,6 +92,7 @@
             <size key="customSize" width="369" height="533"/>
             <connections>
                 <outlet property="cellTitle" destination="vsA-Uz-5cb" id="xEg-qW-Rsa"/>
+                <outlet property="discountPrice" destination="naM-b0-eH5" id="IDw-C2-eVc"/>
                 <outlet property="titleImage" destination="D6o-6F-pmE" id="rg1-8G-8yq"/>
                 <outlet property="titleName" destination="Pab-8N-gfk" id="BMb-zY-Zdz"/>
                 <outlet property="titlePrice" destination="hbb-xi-F42" id="XSM-C1-laf"/>
@@ -92,7 +102,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="13" width="256" height="370"/>
+        <image name="15" width="736" height="1034"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

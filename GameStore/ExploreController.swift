@@ -9,6 +9,7 @@ import UIKit
 
 class ExploreController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
+    private let searchController = UISearchController(searchResultsController: SearchResultsViewController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,20 @@ class ExploreController: UIViewController {
         layout.itemSize = CGSize(width: 200, height: 400)
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         collection.collectionViewLayout = layout
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Items"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
     }
     
-
+    @IBAction func searchHandler(_ sender: UITextField) {
+    }
 }
 
+//MARK: - DataSource, Delegate
 extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
@@ -58,5 +68,21 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: collectionView.frame.width/1-80, height: 420)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
+        navigationController?.show(controller, sender: nil)
+    }
+}
+
+//MARK: - SearchController
+extension ExploreController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text, !searchText.isEmpty {
+            if let searchResultsVC = searchController.searchResultsController as? SearchResultsViewController {
+                searchResultsVC.filterContent(for: searchText)
+            }
+        }
     }
 }

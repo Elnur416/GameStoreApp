@@ -9,6 +9,7 @@ import UIKit
 
 class FooterView: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
+    let navigation = UINavigationController()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +19,7 @@ class FooterView: UICollectionReusableView {
         collection.register(UINib(nibName: "\(FooterCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(FooterCell.self)")
         
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 200)
+        layout.itemSize = CGSize(width: 100, height: 180)
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
         layout.scrollDirection = .horizontal
@@ -30,7 +31,7 @@ class FooterView: UICollectionReusableView {
 
 extension FooterView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        50
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -39,6 +40,11 @@ extension FooterView: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: collectionView.frame.width/3, height: 200)
+        .init(width: collectionView.frame.width/3, height: 180)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
+        navigation.show(controller, sender: nil)
     }
 }
