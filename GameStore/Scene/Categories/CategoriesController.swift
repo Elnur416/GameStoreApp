@@ -9,6 +9,9 @@ import UIKit
 
 class CategoriesController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
+    var categories = [Category]()
+    let managerCategory = CoreDataForCategory(context: AppDelegate().persistentContainer.viewContext)
+    let gameDatas = GameDatas()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,12 @@ class CategoriesController: UIViewController {
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
         collection.collectionViewLayout = layout
+        
+        gameDatas.loadData()
+        
+        managerCategory.fetchData { data in
+            self.categories = data
+        }
     }
     
 
@@ -31,11 +40,12 @@ class CategoriesController: UIViewController {
 
 extension CategoriesController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoriesCell.self)", for: indexPath) as! CategoriesCell
+        cell.configure(category: categories[indexPath.row])
         return cell
     }
     
@@ -46,5 +56,21 @@ extension CategoriesController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamesForCategoryController.self)") as! GamesForCategoryController
         navigationController?.show(controller, sender: nil)
+    }
+}
+
+extension UIColor {
+    convenience init?(hex: String) {
+        var hexSanitized = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        hexSanitized = hexSanitized.replacingOccurrences(of: "#", with: "")
+
+        var rgb: UInt64 = 0
+        Scanner(string: hexSanitized).scanHexInt64(&rgb)
+
+        let red = CGFloat((rgb & 0xFF0000) >> 16) / 255.0
+        let green = CGFloat((rgb & 0x00FF00) >> 8) / 255.0
+        let blue = CGFloat(rgb & 0x0000FF) / 255.0
+
+        self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
 }

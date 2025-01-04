@@ -76,6 +76,16 @@
                             <constraint firstAttribute="height" constant="30" id="Zhg-Ph-CkA"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTJ-TE-QnE">
+                        <rect key="frame" x="291.33333333333331" y="334.33333333333331" width="101.66666666666669" height="35"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="+Add Cart">
+                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
+                        </buttonConfiguration>
+                        <connections>
+                            <action selector="addCartButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FNV-Lw-W6p"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="aD7-LS-CGp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="3fE-LM-31g"/>
@@ -85,7 +95,9 @@
                     <constraint firstItem="aD7-LS-CGp" firstAttribute="top" secondItem="WH5-Pi-j4c" secondAttribute="bottom" constant="20" id="CwX-gT-Ak6"/>
                     <constraint firstItem="31Z-1v-ItN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="J4n-b0-dYi"/>
                     <constraint firstItem="8fW-GU-65a" firstAttribute="leading" secondItem="MpS-VR-n8K" secondAttribute="trailing" constant="10" id="LTi-Ip-OwQ"/>
+                    <constraint firstAttribute="trailing" secondItem="lTJ-TE-QnE" secondAttribute="trailing" constant="10" id="Lr7-IT-4gS"/>
                     <constraint firstItem="31Z-1v-ItN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="M2X-YR-EHp"/>
+                    <constraint firstItem="lTJ-TE-QnE" firstAttribute="top" secondItem="k8b-zg-WLo" secondAttribute="bottom" constant="10" id="PwL-3X-tSu"/>
                     <constraint firstItem="CYz-6W-ERz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="RtX-mh-5HL"/>
                     <constraint firstItem="WH5-Pi-j4c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="40" id="Smp-Mc-sVD"/>
                     <constraint firstItem="8fW-GU-65a" firstAttribute="top" secondItem="WH5-Pi-j4c" secondAttribute="bottom" constant="20" id="V0Q-mj-Ok6"/>
@@ -119,7 +131,7 @@
         <image name="playstation.logo" catalog="system" width="128" height="93"/>
         <image name="xbox.logo" catalog="system" width="128" height="123"/>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

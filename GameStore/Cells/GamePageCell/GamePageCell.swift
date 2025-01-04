@@ -24,6 +24,8 @@ class GamePageCell: UITableViewCell {
         
     }
     
+    @IBAction func addCartButtonAction(_ sender: Any) {
+    }
     @IBAction func addWishlistButton(_ sender: Any) {
     }
 }

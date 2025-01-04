@@ -1,5 +1,5 @@
 //
-//  GamesForCategoryController.swift
+//  CartController.swift
 //  GameStore
 //
 //  Created by Elnur Mammadov on 04.01.25.
@@ -7,12 +7,13 @@
 
 import UIKit
 
-class GamesForCategoryController: UIViewController {
+class CartController: UIViewController {
     @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Payment"
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
@@ -21,7 +22,7 @@ class GamesForCategoryController: UIViewController {
 
 }
 
-extension GamesForCategoryController: UITableViewDataSource, UITableViewDelegate {
+extension CartController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
@@ -38,5 +39,11 @@ extension GamesForCategoryController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
         navigationController?.show(controller, sender: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            return
+        }
     }
 }
