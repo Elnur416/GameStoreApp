@@ -9,7 +9,9 @@ import UIKit
 
 class FooterView: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
-    let navigation = UINavigationController()
+    
+    var items = [String]()
+    var itemSelection: ((Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,11 +29,15 @@ class FooterView: UICollectionReusableView {
         collection.collectionViewLayout = layout
     }
     
+    func configure(data: [String]) {
+        items = data
+    }
+    
 }
 
 extension FooterView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        50
+        50//items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -44,7 +50,6 @@ extension FooterView: UICollectionViewDataSource, UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
-        navigation.show(controller, sender: nil)
+        itemSelection?(indexPath.item)
     }
 }

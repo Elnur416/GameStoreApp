@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		64A10CC82D24219000970D4A /* Exceptions for "GameStore" folder in "GameStore" target */ = {
+		643546572D2925CF000B780F /* Exceptions for "GameStore" folder in "GameStore" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,7 +24,7 @@
 		64A10CB52D24218E00970D4A /* GameStore */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				64A10CC82D24219000970D4A /* Exceptions for "GameStore" folder in "GameStore" target */,
+				643546572D2925CF000B780F /* Exceptions for "GameStore" folder in "GameStore" target */,
 			);
 			path = GameStore;
 			sourceTree = "<group>";

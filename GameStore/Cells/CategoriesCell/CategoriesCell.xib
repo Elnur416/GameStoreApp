@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoriesCell" customModule="GameStore" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="232" height="238"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="232" height="238"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yxz-Np-Orb">
+                        <rect key="frame" x="0.0" y="60" width="232" height="178"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Category1" translatesAutoresizingMaskIntoConstraints="NO" id="W76-HB-jjO">
+                        <rect key="frame" x="52" y="0.0" width="180" height="238"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6y-XV-JJJ">
+                        <rect key="frame" x="0.0" y="197.66666666666666" width="232" height="20.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="m6y-XV-JJJ" secondAttribute="trailing" id="BhU-p6-RJF"/>
+                <constraint firstAttribute="trailing" secondItem="W76-HB-jjO" secondAttribute="trailing" id="KNc-RY-VxX"/>
+                <constraint firstItem="Yxz-Np-Orb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="60" id="ONb-75-imz"/>
+                <constraint firstItem="W76-HB-jjO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Rtn-qD-mjk"/>
+                <constraint firstItem="m6y-XV-JJJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vbj-Uy-Hvj"/>
+                <constraint firstAttribute="bottom" secondItem="W76-HB-jjO" secondAttribute="bottom" id="Ved-pp-Wnm"/>
+                <constraint firstItem="W76-HB-jjO" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.775862" id="gOo-Mw-3F7"/>
+                <constraint firstAttribute="trailing" secondItem="Yxz-Np-Orb" secondAttribute="trailing" id="hew-Kl-sek"/>
+                <constraint firstAttribute="bottom" secondItem="Yxz-Np-Orb" secondAttribute="bottom" id="pAV-83-8Qh"/>
+                <constraint firstItem="Yxz-Np-Orb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sfr-FU-CgO"/>
+                <constraint firstAttribute="bottom" secondItem="m6y-XV-JJJ" secondAttribute="bottom" constant="20" id="wdd-SM-ddf"/>
+            </constraints>
+            <size key="customSize" width="232" height="238"/>
+            <connections>
+                <outlet property="categoryName" destination="m6y-XV-JJJ" id="JOp-Fi-MaL"/>
+                <outlet property="titleImage" destination="W76-HB-jjO" id="J6h-K0-2lK"/>
+                <outlet property="titleView" destination="Yxz-Np-Orb" id="ZkF-jB-1J0"/>
+            </connections>
+            <point key="canvasLocation" x="206.10687022900763" y="41.549295774647888"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Category1" width="295" height="389"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -11,9 +11,7 @@ class ExploreController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     private let searchController = UISearchController(searchResultsController: SearchResultsViewController())
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    fileprivate func configureUI() {
         collection.dataSource = self
         collection.delegate = self
         collection.register(UINib(nibName: "\(Header1View.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(Header1View.self)")
@@ -26,10 +24,16 @@ class ExploreController: UIViewController {
         collection.collectionViewLayout = layout
         
         searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
+//        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Items"
         navigationItem.searchController = searchController
-        definesPresentationContext = true
+//        definesPresentationContext = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        configureUI()
         
     }
     
@@ -53,7 +57,12 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(Header1View.self)", for: indexPath)
             return header
         } else {
-            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(FooterView.self)", for: indexPath)
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(FooterView.self)", for: indexPath) as! FooterView
+            footer.configure(data: [])
+            footer.itemSelection = { index in
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
+                self.navigationController?.show(controller, sender: nil)
+            }
             return footer
         }
     }
