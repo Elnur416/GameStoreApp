@@ -12,6 +12,7 @@ struct GameModel: Codable {
     let mainImage: String?
     let customImage: String?
     let price: Double?
+    var discountedPrice: Double?
     let about: String?
     let isLiked: Bool?
     let category: CategoryModel

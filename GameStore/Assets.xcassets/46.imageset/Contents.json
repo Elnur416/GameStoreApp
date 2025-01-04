@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mortal kombat x pc.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

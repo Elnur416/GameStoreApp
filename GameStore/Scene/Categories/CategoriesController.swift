@@ -9,43 +9,46 @@ import UIKit
 
 class CategoriesController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
-    var categories = [Category]()
-    let managerCategory = CoreDataForCategory(context: AppDelegate().persistentContainer.viewContext)
-    let gameDatas = GameDatas()
+    let viewModel = CategoriesViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureUI()
+        loadData()
+        viewModel.fetchCategories()
+    }
+    
+    func loadData() {
+        if viewModel.manager.getBool(key: .isCategoryLoaded) {
+            return
+        } else {
+            viewModel.loadData()
+        }
+    }
+    
+    func configureUI() {
         title = "Categories"
         collection.dataSource = self
         collection.delegate = self
         collection.register(UINib(nibName: "\(CategoriesCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CategoriesCell.self)")
-        
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 80, height: 180)
         layout.sectionInset = UIEdgeInsets(top: 0, left:20, bottom: 0, right: 20)
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
         collection.collectionViewLayout = layout
-        
-        gameDatas.loadData()
-        
-        managerCategory.fetchData { data in
-            self.categories = data
-        }
     }
-    
-
 }
 
 extension CategoriesController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        categories.count
+        viewModel.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoriesCell.self)", for: indexPath) as! CategoriesCell
-        cell.configure(category: categories[indexPath.row])
+        cell.configure(category: viewModel.categories[indexPath.row])
         return cell
     }
     

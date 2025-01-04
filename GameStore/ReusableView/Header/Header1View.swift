@@ -9,7 +9,7 @@ import UIKit
 
 class Header1View: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
-    private var sectionItems: [String] = ["Popular Games", "Trending", "On Sale", "Coming Soon"]
+    private var sectionItems: [String] = ["All Games", "Trending", "On Sale", "Coming Soon"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
