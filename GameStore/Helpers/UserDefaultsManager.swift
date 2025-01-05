@@ -10,7 +10,7 @@ import Foundation
 class UserDefaultsManager {
     enum UserDefaultsTypes: String {
         case isLoggedIn = "LoggedIn"
-        case isCategoryLoaded = "CategoryLoaded"
+        case isDataLoaded = "CategoryLoaded"
     }
     
     func setValue(value: Any, key: UserDefaultsTypes) {

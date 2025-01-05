@@ -19,12 +19,27 @@ class MainCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
      
+        configureUI()
+    }
+    
+    func configureUI() {
         titleImage.layer.cornerRadius = 30
         titleView.layer.cornerRadius = 30
         let gradient = UIImage.gImage(frame: cellTitle.bounds, colours: [.systemBlue, .blue])
-        cellTitle.font = UIFont.boldSystemFont(ofSize: 35)
+        cellTitle.font = UIFont.boldSystemFont(ofSize: 30)
         cellTitle.textColor = UIColor(patternImage: gradient)
         titleView.backgroundColor = .systemBlue
         discountPrice.isHidden = true
+    }
+    
+    func configure(item: Game) {
+        titleName.text = item.name
+        titleImage.image = UIImage(named: item.mainImage ?? "")
+        titlePrice.text = "\(item.price)"
+    }
+    
+    func configureTitle(text: String, isHiddenDiscount: Bool) {
+        cellTitle.text = text
+        discountPrice.isHidden = isHiddenDiscount
     }
 }

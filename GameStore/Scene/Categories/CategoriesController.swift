@@ -20,10 +20,11 @@ class CategoriesController: UIViewController {
     }
     
     func loadData() {
-        if viewModel.manager.getBool(key: .isCategoryLoaded) {
+        if viewModel.manager.getBool(key: .isDataLoaded) {
             return
         } else {
             viewModel.loadData()
+            viewModel.manager.setValue(value: true, key: .isDataLoaded)
         }
     }
     

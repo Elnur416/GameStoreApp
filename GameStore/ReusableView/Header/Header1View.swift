@@ -9,7 +9,8 @@ import UIKit
 
 class Header1View: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
-    private var sectionItems: [String] = ["All Games", "Trending", "On Sale", "Coming Soon"]
+    private var sectionItems: [Sections] = [.init(name: "Popular Games", isSelected: false), .init(name: "On Sale", isSelected: false), .init(name: "Coming Soon", isSelected: false)]
+    var sectionAction: ((Sections) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,6 +36,22 @@ extension Header1View: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         .init(width: collectionView.frame.size.width/2 - 20, height: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collection.cellForItem(at: indexPath) as? Header1Cell {
+            sectionItems[indexPath.row].isSelected = true
+            cell.updateView(isSelected: true)
+            let selectedSection = sectionItems[indexPath.row]
+            sectionAction?(selectedSection)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let cell = collection.cellForItem(at: indexPath) as? Header1Cell {
+            sectionItems[indexPath.row].isSelected = false
+            cell.updateView(isSelected: false)
+        }
     }
 }
 

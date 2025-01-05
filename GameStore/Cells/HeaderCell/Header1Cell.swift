@@ -20,7 +20,12 @@ class Header1Cell: UICollectionViewCell {
         titleLabel.textColor = .white
     }
 
-    func configure(text: String) {
-        titleLabel.text = text
+    func configure(text: Sections) {
+        titleLabel.text = text.name
+    }
+    
+    func updateView(isSelected: Bool) {
+        let gradient = UIImage.gImage(frame: titleView.bounds, colours: [.systemBlue, .blue])
+        titleView.backgroundColor = isSelected ? .darkGray: UIColor(patternImage: gradient)
     }
 }

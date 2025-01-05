@@ -21,6 +21,6 @@ class CategoriesViewModel {
     
     func loadData() {
         gameDatas.loadData()
-        manager.setValue(value: true, key: .isCategoryLoaded)
+        manager.setValue(value: true, key: .isDataLoaded)
     }
 }

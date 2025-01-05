@@ -10,6 +10,19 @@ import UIKit
 class ExploreController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     private let searchController = UISearchController(searchResultsController: SearchResultsViewController())
+    let viewModel = ExploreViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        configureUI()
+        loadData()
+        viewModel.fetchGames()
+        viewModel.getRandomGame()
+    }
+    
+    @IBAction func searchHandler(_ sender: UITextField) {
+    }
     
     fileprivate func configureUI() {
         collection.dataSource = self
@@ -24,20 +37,17 @@ class ExploreController: UIViewController {
         collection.collectionViewLayout = layout
         
         searchController.searchResultsUpdater = self
-//        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Items"
         navigationItem.searchController = searchController
-//        definesPresentationContext = true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        configureUI()
-        
-    }
-    
-    @IBAction func searchHandler(_ sender: UITextField) {
+    func loadData() {
+        if viewModel.manager.getBool(key: .isDataLoaded) {
+            return
+        } else {
+            viewModel.loadData()
+            viewModel.manager.setValue(value: true, key: .isDataLoaded)
+        }
     }
 }
 
@@ -49,18 +59,40 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCell", for: indexPath) as! MainCell
+        cell.configure(item: viewModel.randomGame[indexPath.row])
+        switch viewModel.selectedSection?.name {
+        case "Popular Games":
+            cell.configureTitle(text: "Most Played Game", isHiddenDiscount: true)
+            collection.reloadData()
+        case "On Sale":
+            cell.configureTitle(text: "Special Price", isHiddenDiscount: false)
+            collection.reloadData()
+        case "Coming Soon":
+            cell.configureTitle(text: "Popular Upcoming", isHiddenDiscount: true)
+            collection.reloadData()
+        default:
+            cell.configureTitle(text: "Most Played Game", isHiddenDiscount: true)
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(Header1View.self)", for: indexPath)
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(Header1View.self)", for: indexPath) as! Header1View
+            header.sectionAction = { section in
+                self.viewModel.selectedSection = section
+                self.collection.reloadData()
+                let sectionIndex = IndexSet(integer: indexPath.section)
+                self.collection.reloadSections(sectionIndex)
+            }
             return header
         } else {
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(FooterView.self)", for: indexPath) as! FooterView
-            footer.configure(data: [])
+            footer.configureData(data: viewModel.games)
             footer.itemSelection = { index in
-                let controller = self.storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
+                let controller = self.storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as!
+                 GamePageController
+                controller.selectedGame = self.viewModel.games[index]
                 self.navigationController?.show(controller, sender: nil)
             }
             return footer
@@ -81,6 +113,7 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
+        controller.selectedGame = viewModel.randomGame[indexPath.row]
         navigationController?.show(controller, sender: nil)
     }
 }

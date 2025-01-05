@@ -2,7 +2,7 @@
 //  Game+CoreDataProperties.swift
 //  GameStore
 //
-//  Created by Elnur Mammadov on 04.01.25.
+//  Created by Elnur Mammadov on 05.01.25.
 //
 //
 

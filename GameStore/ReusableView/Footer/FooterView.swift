@@ -10,12 +10,20 @@ import UIKit
 class FooterView: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
     
-    var items = [String]()
+    var items = [Game]()
     var itemSelection: ((Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
        
+        configureUI()
+    }
+    
+    func configureData(data: [Game]) {
+        items = data
+    }
+    
+    func configureUI() {
         collection.dataSource = self
         collection.delegate = self
         collection.register(UINib(nibName: "\(FooterCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(FooterCell.self)")
@@ -29,19 +37,16 @@ class FooterView: UICollectionReusableView {
         collection.collectionViewLayout = layout
     }
     
-    func configure(data: [String]) {
-        items = data
-    }
-    
 }
 
 extension FooterView: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        50//items.count
+        items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(FooterCell.self)", for: indexPath) as! FooterCell
+        cell.configure(item: items[indexPath.row])
         return cell
     }
     
