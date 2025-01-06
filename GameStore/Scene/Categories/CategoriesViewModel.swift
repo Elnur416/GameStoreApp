@@ -18,9 +18,4 @@ class CategoriesViewModel {
             self.categories = categories
         }
     }
-    
-    func loadData() {
-        gameDatas.loadData()
-        manager.setValue(value: true, key: .isDataLoaded)
-    }
 }

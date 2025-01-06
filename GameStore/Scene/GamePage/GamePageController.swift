@@ -11,8 +11,10 @@ class GamePageController: UIViewController {
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var discount: UILabel!
+    @IBOutlet weak var buyView: UIView!
     
     var selectedGame: Game?
+    let managerGame = CoreDataForGame(context: AppDelegate().persistentContainer.viewContext)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,16 @@ extension GamePageController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(GamePageCell.self)") as! GamePageCell
-        cell.configure(item: selectedGame!)
+        if selectedGame?.price == 0 {
+            title = "Coming Soon"
+            cell.configure(item: selectedGame!, addCartHidden: true)
+            buyView.isHidden = true
+        } else {
+            cell.configure(item: selectedGame!, addCartHidden: false)
+        }
+        cell.likeAction = { liked in
+            self.managerGame.updateData(game: self.selectedGame!, isLiked: liked)
+        }
         return cell
     }
     

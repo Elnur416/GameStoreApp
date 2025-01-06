@@ -1134,6 +1134,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buyView" destination="W7G-OQ-WpD" id="dWL-VS-62l"/>
                         <outlet property="discount" destination="7AS-qv-2FW" id="YTe-zc-f3h"/>
                         <outlet property="price" destination="Ixl-jo-B14" id="1M3-UN-dbl"/>
                         <outlet property="table" destination="d4U-Kc-k2v" id="1jA-3B-cKg"/>

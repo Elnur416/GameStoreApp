@@ -9,7 +9,7 @@ import UIKit
 
 class Header1View: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
-    private var sectionItems: [Sections] = [.init(name: "Popular Games", isSelected: false), .init(name: "On Sale", isSelected: false), .init(name: "Coming Soon", isSelected: false)]
+    private var sectionItems: [Sections] = [.init(name: "All Games", isSelected: false), .init(name: "On Sale", isSelected: false), .init(name: "Coming Soon", isSelected: false)]
     var sectionAction: ((Sections) -> Void)?
     
     override func awakeFromNib() {

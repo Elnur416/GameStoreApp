@@ -10,7 +10,10 @@ import UIKit
 class SearchResultsViewController: UIViewController {
 
     var tableView: UITableView!
-        var filteredData: [String] = []
+    var filteredData = [Game]()
+    var allData = [Game]()
+    var itemSelection: ((Int) -> Void)?
+    var filteredGames: (([Game]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,29 +23,37 @@ class SearchResultsViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
+        tableView.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
+        
+    }
+    
+    func configure(items: [Game]) {
+        allData = items
+    }
+    
+    func filterContent(for searchText: String) {
+        filteredData = allData.filter { $0.name?.lowercased().contains(searchText.lowercased()) ?? false }
+        tableView.reloadData()
     }
 }
 
 extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegate {
-    func filterContent(for searchText: String) {
-        // Filtreleme mantığı (örnek veri)
-        let allData = ["Forza", "Gta", "Red Dead", "Date", "Diablo"]
-        filteredData = allData.filter { $0.lowercased().contains(searchText.lowercased()) }
-        tableView.reloadData()
-    }
-    
-    // TableView DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = filteredData[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(GamesForCategoryCell.self)") as! GamesForCategoryCell
+        cell.configure(model: filteredData[indexPath.row])
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        150
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        filteredGames?(filteredData)
+        itemSelection?(indexPath.item)
     }
 }

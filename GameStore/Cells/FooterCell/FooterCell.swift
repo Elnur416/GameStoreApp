@@ -41,8 +41,14 @@ class FooterCell: UICollectionViewCell {
             discountPrice.text = "\(item.price)$"
             titlePrice.text = "\(item.discountedPrice)$"
         } else {
-            discountPrice.isHidden = true
-            titlePrice.text = "\(item.price)$"
+            
+            if item.price != 0 {
+                discountPrice.isHidden = true
+                titlePrice.text = "\(item.price)$"
+            } else {
+                discountPrice.isHidden = true
+                titlePrice.text = "Coming Soon"
+            }
         }
     }
 }

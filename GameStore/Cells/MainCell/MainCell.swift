@@ -30,16 +30,32 @@ class MainCell: UICollectionViewCell {
         cellTitle.textColor = UIColor(patternImage: gradient)
         titleView.backgroundColor = .systemBlue
         discountPrice.isHidden = true
+        let text = discountPrice.text ?? ""
+        let attributes: [NSAttributedString.Key: Any] = [
+            .strikethroughStyle: NSUnderlineStyle.single.rawValue,
+            .foregroundColor: UIColor.red
+        ]
+        let attributedString = NSAttributedString(string: text, attributes: attributes)
+        discountPrice.attributedText = attributedString
     }
     
-    func configure(item: Game) {
+    func configure(item: Game, cellTitleName: String) {
         titleName.text = item.name
         titleImage.image = UIImage(named: item.mainImage ?? "")
         titlePrice.text = "\(item.price)"
-    }
-    
-    func configureTitle(text: String, isHiddenDiscount: Bool) {
-        cellTitle.text = text
-        discountPrice.isHidden = isHiddenDiscount
+        cellTitle.text = cellTitleName
+        if item.discountedPrice != 0 {
+            discountPrice.isHidden = false
+            discountPrice.text = "\(item.price)$"
+            titlePrice.text = "\(item.discountedPrice)$"
+        } else {
+            if item.price != 0 {
+                discountPrice.isHidden = true
+                titlePrice.text = "\(item.price)$"
+            } else {
+                discountPrice.isHidden = true
+                titlePrice.text = ""
+            }
+        }
     }
 }

@@ -40,4 +40,13 @@ class CoreDataForGame {
             print(error.localizedDescription)
         }
     }
+    
+    func updateData(game: Game, isLiked: Bool) {
+        game.isLiked = isLiked
+        do {
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

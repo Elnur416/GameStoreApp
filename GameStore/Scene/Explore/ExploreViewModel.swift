@@ -15,6 +15,10 @@ class ExploreViewModel {
     var randomGame = [Game]()
     var selectedSection: Sections?
     var gamesOnSale = [Game]()
+    var randomGameOnSale = [Game]()
+    var filteredGames = [Game]()
+    var upcomingGames = [Game]()
+    var randomUpcomingGame = [Game]()
     
     func loadData() {
         gameData.loadData()
@@ -25,6 +29,7 @@ class ExploreViewModel {
         managerGame.fetchData { data in
             self.games = data
             self.gamesOnSale = games.filter { $0.discountedPrice != 0 }
+            self.upcomingGames = games.filter { $0.price == 0 }
         }
     }
     
@@ -33,4 +38,17 @@ class ExploreViewModel {
         randomGame.removeAll()
         randomGame.append(game!)
     }
+    
+    func getRandomGameOnSale() {
+        let game = gamesOnSale.randomElement()
+        randomGameOnSale.removeAll()
+        randomGameOnSale.append(game!)
+    }
+    
+    func getRandomUpcomingGame() {
+        let game = upcomingGames.randomElement()
+        randomUpcomingGame.removeAll()
+        randomUpcomingGame.append(game!)
+    }
 }
+

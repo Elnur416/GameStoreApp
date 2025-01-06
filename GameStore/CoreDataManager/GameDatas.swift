@@ -229,5 +229,14 @@ class GameDatas {
                                isLiked: false,
                                category: category1)
         gameData.saveData(game: game20)
+        
+        let game21 = GameModel(name: "Far Cry 4",
+                               mainImage: "farcry4",
+                               customImage: "farcry42",
+                               price: 0,
+                               about: "Hidden in the towering Himalayas lies Kyrat, a country steeped in tradition and violence. You are Ajay Ghale. Traveling to Kyrat to fulfill your mother’s dying wish, you find yourself caught up in a civil war to overthrow the oppressive regime of dictator Pagan Min. Explore and navigate this vast open world, where danger and unpredictability lurk around every corner. Here, every decision counts, and every second is a story. Welcome to Kyrat.",
+                               isLiked: false,
+                               category: category2)
+        gameData.saveData(game: game21)
     }
 }

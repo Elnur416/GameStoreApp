@@ -21,6 +21,7 @@ class FooterView: UICollectionReusableView {
     
     func configureData(data: [Game]) {
         items = data
+        self.collection.reloadData()
     }
     
     func configureUI() {

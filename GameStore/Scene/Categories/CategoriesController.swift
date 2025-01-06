@@ -15,17 +15,7 @@ class CategoriesController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
-        loadData()
         viewModel.fetchCategories()
-    }
-    
-    func loadData() {
-        if viewModel.manager.getBool(key: .isDataLoaded) {
-            return
-        } else {
-            viewModel.loadData()
-            viewModel.manager.setValue(value: true, key: .isDataLoaded)
-        }
     }
     
     func configureUI() {
@@ -59,6 +49,8 @@ extension CategoriesController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamesForCategoryController.self)") as! GamesForCategoryController
+        controller.viewModel.selectedCategory = viewModel.categories[indexPath.row].name
+        
         navigationController?.show(controller, sender: nil)
     }
 }
