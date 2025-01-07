@@ -9,26 +9,31 @@ import UIKit
 
 class CartController: UIViewController {
     @IBOutlet weak var table: UITableView!
+    let viewModel = CartViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureUI()
+        viewModel.readData()
+    }
+    
+    func configureUI() {
         title = "Payment"
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
     }
-    
-
 }
 
 extension CartController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        viewModel.games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(GamesForCategoryCell.self)") as! GamesForCategoryCell
+        cell.configureForCart(model: viewModel.games[indexPath.row])
         return cell
     }
     
@@ -38,7 +43,8 @@ extension CartController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
-        navigationController?.show(controller, sender: nil)
+        controller.viewModel.selectedGameFromCart = viewModel.games[indexPath.row]
+           navigationController?.show(controller, sender: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

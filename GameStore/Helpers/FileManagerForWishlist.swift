@@ -1,34 +1,34 @@
 //
-//  FileManagerHelper.swift
+//  FileManagerForWishlist.swift
 //  GameStore
 //
-//  Created by Elnur Mammadov on 31.12.24.
+//  Created by Elnur Mammadov on 07.01.25.
 //
 
 import Foundation
 
-class FileManagerHelper {
+class FileManagerForWishlist {
     func getPath() -> URL {
         let files = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let path = files[0].appendingPathComponent("User.json")
+        let path = files[0].appendingPathComponent("LikedGames.json")
 //        print(path)
         return path
     }
     
-    func readData(completion: (([User]) -> Void)) {
+    func readData(completion: (([GameForCart]) -> Void)) {
         if let data = try? Data(contentsOf: getPath()) {
             do {
-                let users = try JSONDecoder().decode([User].self, from: data)
-                completion(users)
+                let games = try JSONDecoder().decode([GameForCart].self, from: data)
+                completion(games)
             } catch {
                 print(error.localizedDescription)
             }
         }
     }
     
-    func writeData(user: [User]) {
+    func writeData(game: [GameForCart]) {
         do {
-            let data = try JSONEncoder().encode(user)
+            let data = try JSONEncoder().encode(game)
             try? data.write(to: getPath())
         } catch {
             print(error.localizedDescription)

@@ -104,13 +104,13 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
                  GamePageController
                 switch self.viewModel.selectedSection?.name {
                     case "All Games":
-                    controller.selectedGame = self.viewModel.games[index]
+                    controller.viewModel.selectedGame = self.viewModel.games[index]
                 case "On Sale":
-                    controller.selectedGame = self.viewModel.gamesOnSale[index]
+                    controller.viewModel.selectedGame = self.viewModel.gamesOnSale[index]
                 case "Coming Soon":
-                    controller.selectedGame = self.viewModel.upcomingGames[index]
+                    controller.viewModel.selectedGame = self.viewModel.upcomingGames[index]
                 default:
-                    controller.selectedGame = self.viewModel.games[index]
+                    controller.viewModel.selectedGame = self.viewModel.games[index]
                 }
                 self.navigationController?.show(controller, sender: nil)
             }
@@ -134,13 +134,13 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
         switch viewModel.selectedSection?.name {
         case "All Games":
-            controller.selectedGame = viewModel.randomGame[indexPath.item]
+            controller.viewModel.selectedGame = viewModel.randomGame[indexPath.item]
         case "On Sale":
-            controller.selectedGame = viewModel.randomGameOnSale[indexPath.item]
+            controller.viewModel.selectedGame = viewModel.randomGameOnSale[indexPath.item]
         case "Coming Soon":
-            controller.selectedGame = viewModel.randomUpcomingGame[indexPath.item]
+            controller.viewModel.selectedGame = viewModel.randomUpcomingGame[indexPath.item]
         default :
-            controller.selectedGame = viewModel.randomGame[indexPath.item]
+            controller.viewModel.selectedGame = viewModel.randomGame[indexPath.item]
         }
         navigationController?.show(controller, sender: nil)
     }
@@ -159,7 +159,7 @@ extension ExploreController: UISearchResultsUpdating {
                 controller.itemSelection = { index in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as!
                      GamePageController
-                    vc.selectedGame = self.viewModel.filteredGames[index]
+                    vc.viewModel.selectedGame = self.viewModel.filteredGames[index]
                     self.navigationController?.show(vc, sender: nil)
                 }
             }

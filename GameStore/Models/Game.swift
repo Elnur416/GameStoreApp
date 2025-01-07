@@ -23,3 +23,13 @@ struct CategoryModel: Codable {
     let image: String?
     let colour: String?
 }
+
+struct GameForCart: Codable {
+    let name: String?
+    let mainImage: String?
+    let customImage: String?
+    let price: Double?
+    var discountedPrice: Double?
+    let about: String?
+    let isLiked: Bool?
+}

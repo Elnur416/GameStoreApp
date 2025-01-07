@@ -43,7 +43,7 @@ extension GamesForCategoryController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
-        controller.selectedGame = viewModel.gamesForcategory[indexPath.row]
+        controller.viewModel.selectedGame = viewModel.gamesForcategory[indexPath.row]
         navigationController?.show(controller, sender: nil)
     }
 }

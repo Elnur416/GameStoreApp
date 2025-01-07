@@ -47,4 +47,22 @@ class GamesForCategoryCell: UITableViewCell {
             }
         }
     }
+    
+    func configureForCart(model: GameForCart) {
+        titleName.text = model.name
+        titleImage.image = UIImage(named: model.mainImage ?? "")
+        if model.discountedPrice != 0 {
+            discountPrice.isHidden = false
+            discountPrice.text = "\(model.price ?? 0)$"
+            price.text = "\(model.discountedPrice ?? 0)$"
+        } else {
+            if model.price == 0 {
+                price.text = "Coming Soon"
+                discountPrice.isHidden = true
+            } else {
+                discountPrice.isHidden = true
+                price.text = "\(model.price ?? 0)$"
+            }
+        }
+    }
 }

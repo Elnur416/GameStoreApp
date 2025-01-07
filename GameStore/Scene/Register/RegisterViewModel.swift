@@ -23,7 +23,7 @@ class RegisterViewModel {
         if users.contains(where: { $0.fullname == user.fullname && $0.phone == user.phone && $0.email == user.email && $0.password == user.password}) {
             error?()
         } else {
-            adapter.writeData(user: user)
+            adapter.writeData(user: users)
         }
     }
 }

@@ -9,23 +9,25 @@ import UIKit
 
 class WishListController: UIViewController {
     @IBOutlet weak var table: UITableView!
+    let viewModel = WishListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-       title = "WishList"
-        table.dataSource = self
-        table.delegate = self
-        table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
-        
+        configureUI()
     }
     
-
+    func configureUI() {
+        title = "WishList"
+         table.dataSource = self
+         table.delegate = self
+         table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
+    }
 }
 
 extension WishListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

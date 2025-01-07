@@ -23,10 +23,11 @@ class GamePageCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
     @IBAction func addCartButtonAction(_ sender: Any) {
+        
     }
     
     @IBAction func addWishlistButton(_ sender: Any) {
@@ -37,6 +38,13 @@ class GamePageCell: UITableViewCell {
     }
     
     func configure(item: Game, addCartHidden: Bool) {
+        titleImage.image = UIImage(named: item.customImage ?? "")
+        gameName.text = item.name
+        aboutGame.text = "\(item.about ?? "")"
+        addCartButton.isHidden = addCartHidden
+    }
+    
+    func configureForCart(item: GameForCart, addCartHidden: Bool) {
         titleImage.image = UIImage(named: item.customImage ?? "")
         gameName.text = item.name
         aboutGame.text = "\(item.about ?? "")"
