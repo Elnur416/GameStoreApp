@@ -19,9 +19,18 @@ class GamePageController: UIViewController {
         
         configureUI()
         viewModel.readData()
+        viewModel.readDataForWishlist()
     }
     
     @IBAction func buyNowButtonAction(_ sender: Any) {
+    }
+    
+    @objc func likeButtonAction() {
+        if viewModel.liked == true {
+            viewModel.writeToWishlist()
+        } else {
+            viewModel.removeFromWishlist()
+        }
     }
     
     @objc func addToCart() {
@@ -79,6 +88,12 @@ extension GamePageController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(GamePageCell.self)") as! GamePageCell
         if viewModel.selectedGame != nil {
+            let game = viewModel.convertModel(game: viewModel.selectedGame!)
+            if viewModel.gamesForWishlist.contains(game) {
+                cell.configureLikeButton(isLiked: true)
+            } else {
+                cell.configureLikeButton(isLiked: false)
+            }
             if viewModel.selectedGame?.price == 0 {
                 title = "Coming Soon"
                 cell.configure(item: viewModel.selectedGame!, addCartHidden: true)
@@ -86,10 +101,12 @@ extension GamePageController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 cell.configure(item: viewModel.selectedGame!, addCartHidden: false)
             }
-            cell.likeAction = { liked in
-                self.viewModel.managerGame.updateData(game: self.viewModel.selectedGame!, isLiked: liked)
-            }
         } else {
+            if viewModel.gamesForWishlist.contains(viewModel.selectedGameFromCart!) {
+                cell.configureLikeButton(isLiked: true)
+            } else {
+                cell.configureLikeButton(isLiked: false)
+            }
             if viewModel.selectedGameFromCart?.price == 0 {
                 title = "Coming Soon"
                 cell.configureForCart(item: viewModel.selectedGameFromCart!, addCartHidden: true)
@@ -97,11 +114,12 @@ extension GamePageController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 cell.configureForCart(item: viewModel.selectedGameFromCart!, addCartHidden: false)
             }
-//            cell.likeAction = { liked in
-//                self.viewModel.managerGame.updateData(game: self.viewModel.selectedGameFromCart!, isLiked: liked)
-//            }
         }
         cell.addCartButton.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
+        cell.likeButton.addTarget(self, action: #selector(likeButtonAction), for: .touchUpInside)
+        cell.likeAction = { liked in
+            self.viewModel.liked = liked
+        }
         return cell
     }
     

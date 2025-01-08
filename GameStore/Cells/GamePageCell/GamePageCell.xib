@@ -42,7 +42,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xbox.logo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MpS-VR-n8K">
-                        <rect key="frame" x="78" y="255.66666666666666" width="20" height="19.333333333333343"/>
+                        <rect key="frame" x="78" y="255.66666666666663" width="20" height="19.333333333333371"/>
                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8b-zg-WLo">
@@ -52,7 +52,7 @@
                             <color key="baseForegroundColor" systemColor="systemRedColor"/>
                         </buttonConfiguration>
                         <connections>
-                            <action selector="addWishlistButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uUS-PH-LWg"/>
+                            <action selector="likeButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dUf-yV-gi0"/>
                         </connections>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamecontroller" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aD7-LS-CGp">
@@ -70,7 +70,7 @@
                         </connections>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playstation.logo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8fW-GU-65a">
-                        <rect key="frame" x="108" y="255.66666666666666" width="26.333333333333343" height="19.333333333333343"/>
+                        <rect key="frame" x="108" y="255.66666666666663" width="26.333333333333343" height="19.333333333333371"/>
                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                 </subviews>

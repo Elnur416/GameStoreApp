@@ -15,6 +15,7 @@ class WishListController: UIViewController {
         super.viewDidLoad()
 
         configureUI()
+        viewModel.readData()
     }
     
     func configureUI() {
@@ -27,11 +28,12 @@ class WishListController: UIViewController {
 
 extension WishListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        viewModel.games.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(GamesForCategoryCell.self)") as! GamesForCategoryCell
+        cell.configureForCart(model: viewModel.games[indexPath.row])
         return cell
     }
 
@@ -41,6 +43,7 @@ extension WishListController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(identifier: "\(GamePageController.self)") as! GamePageController
+        controller.viewModel.selectedGameFromCart = viewModel.games[indexPath.row]
         navigationController?.show(controller, sender: nil)
     }
 }

@@ -15,15 +15,16 @@ class GamePageViewModel {
     let adapterForWishlist = FileManagerForWishlist()
     var gamesForCart = [GameForCart]()
     var gamesForWishlist = [GameForCart]()
+    var liked: Bool?
     
     func convertModel(game: Game) -> GameForCart {
         return GameForCart(
-            name: game.name,
-            mainImage: game.mainImage,
-            customImage: game.customImage,
+            name: game.name ?? "",
+            mainImage: game.mainImage ?? "",
+            customImage: game.customImage ?? "",
             price: game.price,
             discountedPrice: game.discountedPrice,
-            about: game.about,
+            about: game.about ?? "",
             isLiked: game.isLiked
         )
     }
@@ -40,9 +41,34 @@ class GamePageViewModel {
         adapter.writeData(game: gamesForCart)
     }
     
+    func readDataForWishlist() {
+        adapterForWishlist.readData { data in
+            self.gamesForWishlist = data
+        }
+    }
+    
     func writeToWishlist() {
-        let gameForWishlist = convertModel(game: selectedGame!)
-        gamesForWishlist.append(gameForWishlist)
+        if selectedGame != nil {
+            let gameForWishlist = convertModel(game: selectedGame!)
+            gamesForWishlist.append(gameForWishlist)
+        } else {
+            gamesForWishlist.append(selectedGameFromCart!)
+        }
+        adapterForWishlist.writeData(game: gamesForWishlist)
+    }
+    
+    func removeFromWishlist() {
+        guard let selectedGame = selectedGame else {
+            print("Error: selectedGame is nil")
+            return
+        }
+        let gameForWishlist = convertModel(game: selectedGame)
+        guard let index = gamesForWishlist.firstIndex(of: gameForWishlist) else {
+            print("Error: Game not found in wishlist")
+            return
+        }
+        gamesForWishlist.remove(at: index)
         adapterForWishlist.writeData(game: gamesForWishlist)
     }
 }
+

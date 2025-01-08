@@ -18,7 +18,6 @@ class GamePageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,12 +29,14 @@ class GamePageCell: UITableViewCell {
         
     }
     
-    @IBAction func addWishlistButton(_ sender: Any) {
-        likeButton.isSelected.toggle()
-        let liked = likeButton.isSelected
-        likeButton.setImage(UIImage(systemName: liked ? "heart.fill" : "heart"), for: .normal)
+    @IBAction func likeButtonAction(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        let liked = sender.isSelected
+        sender.setImage(UIImage(systemName: sender.isSelected ? "heart.fill" : "heart"), for: .normal)
+        sender.backgroundColor = .clear
         likeAction?(liked)
     }
+    
     
     func configure(item: Game, addCartHidden: Bool) {
         titleImage.image = UIImage(named: item.customImage ?? "")
@@ -45,9 +46,14 @@ class GamePageCell: UITableViewCell {
     }
     
     func configureForCart(item: GameForCart, addCartHidden: Bool) {
-        titleImage.image = UIImage(named: item.customImage ?? "")
+        titleImage.image = UIImage(named: item.customImage)
         gameName.text = item.name
-        aboutGame.text = "\(item.about ?? "")"
+        aboutGame.text = "\(item.about)"
         addCartButton.isHidden = addCartHidden
+    }
+    
+    func configureLikeButton(isLiked: Bool) {
+        let liked = isLiked
+        likeButton.setImage(UIImage(systemName: liked ? "heart.fill" : "heart"), for: .normal)
     }
 }
