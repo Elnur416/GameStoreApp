@@ -23,9 +23,8 @@ class GamePageViewModel {
             mainImage: game.mainImage ?? "",
             customImage: game.customImage ?? "",
             price: game.price,
-            discountedPrice: game.discountedPrice,
             about: game.about ?? "",
-            isLiked: game.isLiked
+            isPopular: game.isPopular
         )
     }
     

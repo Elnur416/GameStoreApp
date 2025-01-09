@@ -46,9 +46,9 @@ class GamePageCell: UITableViewCell {
     }
     
     func configureForCart(item: GameForCart, addCartHidden: Bool) {
-        titleImage.image = UIImage(named: item.customImage)
+        titleImage.image = UIImage(named: item.customImage ?? "")
         gameName.text = item.name
-        aboutGame.text = "\(item.about)"
+        aboutGame.text = "\(String(describing: item.about))"
         addCartButton.isHidden = addCartHidden
     }
     

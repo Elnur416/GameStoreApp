@@ -15,12 +15,12 @@ class GamesForCategoryCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         let text = discountPrice.text ?? ""
         let attributes: [NSAttributedString.Key: Any] = [
             .strikethroughStyle: NSUnderlineStyle.single.rawValue,
@@ -33,36 +33,10 @@ class GamesForCategoryCell: UITableViewCell {
     func configure(model: Game) {
         titleName.text = model.name
         titleImage.image = UIImage(named: model.mainImage ?? "")
-        if model.discountedPrice != 0 {
-            discountPrice.isHidden = false
-            discountPrice.text = "\(model.price)$"
-            price.text = "\(model.discountedPrice)$"
-        } else {
-            if model.price == 0 {
-                price.text = "Coming Soon"
-                discountPrice.isHidden = true
-            } else {
-                discountPrice.isHidden = true
-                price.text = "\(model.price)$"
-            }
-        }
     }
     
     func configureForCart(model: GameForCart) {
         titleName.text = model.name
-        titleImage.image = UIImage(named: model.mainImage)
-        if model.discountedPrice != 0 {
-            discountPrice.isHidden = false
-            discountPrice.text = "\(model.price)$"
-            price.text = "\(model.discountedPrice)$"
-        } else {
-            if model.price == 0 {
-                price.text = "Coming Soon"
-                discountPrice.isHidden = true
-            } else {
-                discountPrice.isHidden = true
-                price.text = "\(model.price)$"
-            }
-        }
+        titleImage.image = UIImage(named: model.mainImage ?? "")
     }
 }

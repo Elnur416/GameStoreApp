@@ -11,7 +11,7 @@ class FileManagerForWishlist {
     func getPath() -> URL {
         let files = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let path = files[0].appendingPathComponent("LikedGames.json")
-        print(path)
+//        print(path)
         return path
     }
     

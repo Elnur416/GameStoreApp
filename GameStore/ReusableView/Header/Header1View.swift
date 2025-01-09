@@ -9,49 +9,55 @@ import UIKit
 
 class Header1View: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
-    private var sectionItems: [Sections] = [.init(name: "All Games", isSelected: false), .init(name: "On Sale", isSelected: false), .init(name: "Coming Soon", isSelected: false)]
-    var sectionAction: ((Sections) -> Void)?
+    private var games = [Game]()
+    private var popularGames = [Game]()
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    var currentPage: Int = 0
     
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        collection.dataSource = self
-        collection.delegate = self
-        collection.register(UINib(nibName: "Header1Cell", bundle: nil), forCellWithReuseIdentifier: "Header1Cell")
-        collection.showsHorizontalScrollIndicator = false
+        configureUI()
     }
     
+    func configureUI() {
+        collection.dataSource = self
+        collection.delegate = self
+        collection.register(UINib(nibName: "MainCell", bundle: nil), forCellWithReuseIdentifier: "MainCell")
+        collection.showsHorizontalScrollIndicator = false
+        pageControl.currentPage = 0
+    }
+    
+    func configureData(data: [Game]) {
+        self.games = data
+        getPopularGames()
+        collection.reloadData()
+    }
+    
+    func getPopularGames() {
+        popularGames = games.filter{ $0.isPopular }
+    }
 }
 
-extension Header1View: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension Header1View: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,  UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        sectionItems.count
+        popularGames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(Header1Cell.self)", for: indexPath) as! Header1Cell
-        cell.configure(text: sectionItems[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MainCell.self)", for: indexPath) as! MainCell
+        cell.configure(item: popularGames[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: collectionView.frame.size.width/2 - 20, height: 30)
+        .init(width: collectionView.frame.width-40, height: 350)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collection.cellForItem(at: indexPath) as? Header1Cell {
-            sectionItems[indexPath.row].isSelected = true
-            cell.updateView(isSelected: true)
-            let selectedSection = sectionItems[indexPath.row]
-            sectionAction?(selectedSection)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if let cell = collection.cellForItem(at: indexPath) as? Header1Cell {
-            sectionItems[indexPath.row].isSelected = false
-            cell.updateView(isSelected: false)
-        }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        pageControl.numberOfPages = popularGames.count
+        pageControl.currentPage = indexPath.row
     }
 }
 

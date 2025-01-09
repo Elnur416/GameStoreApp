@@ -6,12 +6,7 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		647E04562D2AC480000FF20B /* Sections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647E04552D2AC480000FF20B /* Sections.swift */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		647E04552D2AC480000FF20B /* Sections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sections.swift; sourceTree = "<group>"; };
 		64A10CB32D24218E00970D4A /* GameStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -50,7 +45,6 @@
 		64A10CAA2D24218E00970D4A = {
 			isa = PBXGroup;
 			children = (
-				647E04552D2AC480000FF20B /* Sections.swift */,
 				64A10CB52D24218E00970D4A /* GameStore */,
 				64A10CB42D24218E00970D4A /* Products */,
 			);
@@ -138,7 +132,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				647E04562D2AC480000FF20B /* Sections.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

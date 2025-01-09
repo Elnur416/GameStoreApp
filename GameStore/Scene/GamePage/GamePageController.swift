@@ -51,25 +51,25 @@ class GamePageController: UIViewController {
         table.delegate = self
         table.register(UINib(nibName: "\(GamePageCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamePageCell.self)")
         price.text = "\(viewModel.selectedGame?.price ?? 0)"
-        if viewModel.selectedGame != nil {
-            if viewModel.selectedGame?.discountedPrice != 0 {
-                discount.isHidden = false
-                discount.text = "\(viewModel.selectedGame?.price ?? 0)$"
-                price.text = "\(viewModel.selectedGame?.discountedPrice ?? 0)$"
-            } else {
-                discount.isHidden = true
-                price.text = "\(viewModel.selectedGame?.price ?? 0)$"
-            }
-        } else {
-            if viewModel.selectedGameFromCart?.discountedPrice != 0 {
-                discount.isHidden = false
-                discount.text = "\(viewModel.selectedGameFromCart?.price ?? 0)$"
-                price.text = "\(viewModel.selectedGameFromCart?.discountedPrice ?? 0)$"
-            } else {
-                discount.isHidden = true
-                price.text = "\(viewModel.selectedGameFromCart?.price ?? 0)$"
-            }
-        }
+//        if viewModel.selectedGame != nil {
+//            if viewModel.selectedGame?.discountedPrice != 0 {
+//                discount.isHidden = false
+//                discount.text = "\(viewModel.selectedGame?.price ?? 0)$"
+//                price.text = "\(viewModel.selectedGame?.discountedPrice ?? 0)$"
+//            } else {
+//                discount.isHidden = true
+//                price.text = "\(viewModel.selectedGame?.price ?? 0)$"
+//            }
+//        } else {
+//            if viewModel.selectedGameFromCart?.discountedPrice != 0 {
+//                discount.isHidden = false
+//                discount.text = "\(viewModel.selectedGameFromCart?.price ?? 0)$"
+//                price.text = "\(viewModel.selectedGameFromCart?.discountedPrice ?? 0)$"
+//            } else {
+//                discount.isHidden = true
+//                price.text = "\(viewModel.selectedGameFromCart?.price ?? 0)$"
+//            }
+//        }
         let text = discount.text ?? ""
         let attributes: [NSAttributedString.Key: Any] = [
             .strikethroughStyle: NSUnderlineStyle.single.rawValue,

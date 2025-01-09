@@ -30,10 +30,9 @@ class CoreDataForGame {
         model.mainImage = game.mainImage
         model.customImage = game.customImage
         model.price = game.price ?? 0
-        model.isLiked = game.isLiked ?? false
         model.category = game.category.name
         model.about = game.about
-        model.discountedPrice = game.discountedPrice ?? 0
+        model.isPopular = game.isPopular ?? false
         do {
             try context.save()
         } catch {

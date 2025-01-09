@@ -2,7 +2,7 @@
 //  Game+CoreDataProperties.swift
 //  GameStore
 //
-//  Created by Elnur Mammadov on 05.01.25.
+//  Created by Elnur Mammadov on 09.01.25.
 //
 //
 
@@ -19,11 +19,10 @@ extension Game {
     @NSManaged public var about: String?
     @NSManaged public var category: String?
     @NSManaged public var customImage: String?
-    @NSManaged public var isLiked: Bool
     @NSManaged public var mainImage: String?
     @NSManaged public var name: String?
     @NSManaged public var price: Double
-    @NSManaged public var discountedPrice: Double
+    @NSManaged public var isPopular: Bool
 
 }
 
