@@ -10,12 +10,21 @@ import UIKit
 class WishListController: UIViewController {
     @IBOutlet weak var table: UITableView!
     let viewModel = WishListViewModel()
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureUI()
         viewModel.readData()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        table.refreshControl = refreshControl
+    }
+    
+    @objc func refresh(_ sender: Any) {
+        viewModel.readData()
+        table.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func configureUI() {

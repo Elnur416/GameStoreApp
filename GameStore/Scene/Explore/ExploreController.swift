@@ -29,7 +29,7 @@ class ExploreController: UIViewController {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 200, height: 400)
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
         collection.collectionViewLayout = layout
         
         searchController.searchResultsUpdater = self
@@ -60,9 +60,15 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(Header1View.self)", for: indexPath) as! Header1View
-            header.configureData(data: viewModel.games)
-            return header
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "\(Header1View.self)", for: indexPath) as! Header1View
+        header.configureData(data: viewModel.games)
+        viewModel.popularGames = header.popularGames
+        header.itemSelection = { index in
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
+            controller.viewModel.selectedGame = self.viewModel.popularGames[index]
+            self.navigationController?.show(controller, sender: nil)
+        }
+        return header
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -70,11 +76,12 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: collectionView.frame.width/2-20, height: 180)
+        .init(width: collectionView.frame.width/2-40, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as! GamePageController
+        controller.viewModel.selectedGame = viewModel.games[indexPath.row]
         navigationController?.show(controller, sender: nil)
     }
 }

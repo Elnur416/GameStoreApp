@@ -17,4 +17,13 @@ class CartViewModel {
             self.games = data
         }
     }
+    
+    func writeData() {
+        adapter.writeData(game: games)
+    }
+    
+    func getTotalPrice() -> Double {
+        let totalPrice = games.reduce(0) { $0 + ($1.price ?? 0.0) }
+        return totalPrice
+    }
 }

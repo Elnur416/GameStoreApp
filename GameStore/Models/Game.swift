@@ -28,7 +28,7 @@ struct GameForCart: Equatable, Codable {
     let mainImage: String?
     let customImage: String?
     let price: Double?
-    let about: String?
+    let about: String
     let isPopular: Bool?
 
     static func == (lhs: GameForCart, rhs: GameForCart) -> Bool {

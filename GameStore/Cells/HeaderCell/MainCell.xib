@@ -22,7 +22,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JNH-QS-CWm">
                                 <rect key="frame" x="0.0" y="0.0" width="369" height="533"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G7o-OQ-duQ">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cod3" translatesAutoresizingMaskIntoConstraints="NO" id="G7o-OQ-duQ">
                                         <rect key="frame" x="0.0" y="0.0" width="369" height="479"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPw-WY-RRX">
@@ -38,7 +38,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1135382083" green="0.13364861419999999" blue="0.43233112369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="mPw-WY-RRX" firstAttribute="leading" secondItem="JNH-QS-CWm" secondAttribute="leading" constant="10" id="2LO-HY-Q5g"/>
                                     <constraint firstAttribute="bottom" secondItem="1Lo-6W-bc1" secondAttribute="bottom" constant="20" id="8L9-nv-dw2"/>
@@ -77,4 +77,7 @@
             <point key="canvasLocation" x="226.71755725190837" y="94.014084507042256"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="cod3" width="683" height="1024"/>
+    </resources>
 </document>

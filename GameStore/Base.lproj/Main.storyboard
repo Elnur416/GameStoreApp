@@ -855,14 +855,17 @@
                                 <rect key="frame" x="0.0" y="731" width="402" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bU-No-2Hj">
-                                        <rect key="frame" x="20" y="12.666666666666629" width="263.33333333333331" height="35"/>
+                                        <rect key="frame" x="20" y="12.666666666666629" width="278" height="35"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Confirm Order">
                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="confirmOrderButtonAction:" destination="hu2-qQ-Sw0" eventType="touchUpInside" id="PGl-Gl-Kwr"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzu-ty-G41">
-                                        <rect key="frame" x="343.33333333333331" y="19.666666666666629" width="38.666666666666686" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzu-ty-G41">
+                                        <rect key="frame" x="358" y="19.666666666666629" width="24" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -894,6 +897,7 @@
                     <navigationItem key="navigationItem" id="nMt-3e-O2J"/>
                     <connections>
                         <outlet property="table" destination="CbF-1l-8CG" id="IFP-8t-7W9"/>
+                        <outlet property="totalPrice" destination="hzu-ty-G41" id="ug9-Hh-oCO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mMb-we-XU7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1086,13 +1090,13 @@
                                 <rect key="frame" x="0.0" y="780" width="402" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-tE-Qjb">
-                                        <rect key="frame" x="20" y="12.666666666666629" width="185.66666666666666" height="35"/>
+                                        <rect key="frame" x="20" y="12.666666666666629" width="263.33333333333331" height="35"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Buy now">
+                                        <buttonConfiguration key="configuration" style="filled" title="Add Cart">
                                             <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="buyNowButtonAction:" destination="opa-Wi-2cy" eventType="touchUpInside" id="53o-55-wYN"/>
+                                            <action selector="addCartButtonAction:" destination="opa-Wi-2cy" eventType="touchUpInside" id="DeS-Lj-VHb"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixl-jo-B14">
@@ -1101,20 +1105,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7AS-qv-2FW">
-                                        <rect key="frame" x="265.66666666666669" y="19.666666666666629" width="67.666666666666686" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="7AS-qv-2FW" firstAttribute="centerY" secondItem="W7G-OQ-WpD" secondAttribute="centerY" id="1QY-v9-fOV"/>
                                     <constraint firstItem="OwC-tE-Qjb" firstAttribute="leading" secondItem="W7G-OQ-WpD" secondAttribute="leading" constant="20" id="Bdb-zd-Lfr"/>
-                                    <constraint firstItem="7AS-qv-2FW" firstAttribute="leading" secondItem="OwC-tE-Qjb" secondAttribute="trailing" constant="60" id="IxW-OD-R0n"/>
+                                    <constraint firstItem="Ixl-jo-B14" firstAttribute="leading" secondItem="OwC-tE-Qjb" secondAttribute="trailing" constant="60" id="C01-l7-33k"/>
                                     <constraint firstItem="Ixl-jo-B14" firstAttribute="centerY" secondItem="W7G-OQ-WpD" secondAttribute="centerY" id="dCP-Pt-cxJ"/>
-                                    <constraint firstItem="Ixl-jo-B14" firstAttribute="leading" secondItem="7AS-qv-2FW" secondAttribute="trailing" constant="10" id="izT-FT-cj0"/>
                                     <constraint firstItem="OwC-tE-Qjb" firstAttribute="centerY" secondItem="W7G-OQ-WpD" secondAttribute="centerY" id="vwD-9o-P2h"/>
                                     <constraint firstAttribute="trailing" secondItem="Ixl-jo-B14" secondAttribute="trailing" constant="20" id="wFg-Pc-aRp"/>
                                 </constraints>
@@ -1135,7 +1131,6 @@
                     </view>
                     <connections>
                         <outlet property="buyView" destination="W7G-OQ-WpD" id="dWL-VS-62l"/>
-                        <outlet property="discount" destination="7AS-qv-2FW" id="YTe-zc-f3h"/>
                         <outlet property="price" destination="Ixl-jo-B14" id="1M3-UN-dbl"/>
                         <outlet property="table" destination="d4U-Kc-k2v" id="1jA-3B-cKg"/>
                     </connections>
@@ -1143,6 +1138,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ED-Ue-DEd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8679" y="213"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="71Q-rU-DTm">
+            <objects>
+                <viewController id="maa-SL-Of5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fQU-Me-j9K">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gZ1-ZK-gMf">
+                                <rect key="frame" x="20" y="102" width="362" height="114.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Register" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTU-tc-Kcb">
+                                        <rect key="frame" x="0.0" y="0.0" width="362" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter card informations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqg-lz-Rkh">
+                                        <rect key="frame" x="0.0" y="40.333333333333343" width="362" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q4D-7E-Y8M">
+                                        <rect key="frame" x="0.0" y="80.666666666666657" width="362" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4fg-LL-f9s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gZ1-ZK-gMf" firstAttribute="width" secondItem="fQU-Me-j9K" secondAttribute="width" multiplier="0.900498" id="jn3-Up-jsO"/>
+                            <constraint firstItem="gZ1-ZK-gMf" firstAttribute="top" secondItem="4fg-LL-f9s" secondAttribute="top" constant="40" id="uRB-PD-5Eu"/>
+                            <constraint firstItem="gZ1-ZK-gMf" firstAttribute="centerX" secondItem="fQU-Me-j9K" secondAttribute="centerX" id="yse-8T-lhp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="25r-5s-y9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9502.9850746268658" y="212.81464530892447"/>
         </scene>
     </scenes>
     <resources>

@@ -21,8 +21,8 @@ class FooterCell: UICollectionViewCell {
     private func configureUI() {
         titleView.layer.cornerRadius = 30
         titleImage.layer.cornerRadius = 30
-        let gradient = UIImage.gImage(frame: titleView.bounds, colours: [.systemBlue, .blue])
-        titleView.backgroundColor = UIColor(patternImage: gradient)
+//        let gradient = UIImage.gImage(frame: titleView.bounds, colours: [.systemBlue, .blue])
+//        titleView.backgroundColor = UIColor(patternImage: gradient)
     }
     
     func configure(item: Game) {

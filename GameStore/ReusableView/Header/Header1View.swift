@@ -10,10 +10,10 @@ import UIKit
 class Header1View: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
     private var games = [Game]()
-    private var popularGames = [Game]()
+    var popularGames = [Game]()
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
-    var currentPage: Int = 0
+    var itemSelection: ((Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,12 +52,16 @@ extension Header1View: UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        .init(width: collectionView.frame.width-40, height: 350)
+        .init(width: collectionView.frame.width-80, height: 350)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         pageControl.numberOfPages = popularGames.count
         pageControl.currentPage = indexPath.row
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        itemSelection?(indexPath.item)
     }
 }
 

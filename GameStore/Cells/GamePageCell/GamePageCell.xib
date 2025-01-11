@@ -42,7 +42,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xbox.logo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MpS-VR-n8K">
-                        <rect key="frame" x="78" y="255.66666666666663" width="20" height="19.333333333333371"/>
+                        <rect key="frame" x="78" y="255.66666666666666" width="20" height="19.333333333333343"/>
                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8b-zg-WLo">
@@ -59,18 +59,8 @@
                         <rect key="frame" x="40" y="256.66666666666669" width="28" height="17.333333333333314"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lTJ-TE-QnE">
-                        <rect key="frame" x="301.33333333333331" y="264.33333333333331" width="101.66666666666669" height="35"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="+Add Cart">
-                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
-                        </buttonConfiguration>
-                        <connections>
-                            <action selector="addCartButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FNV-Lw-W6p"/>
-                        </connections>
-                    </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playstation.logo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8fW-GU-65a">
-                        <rect key="frame" x="108" y="255.66666666666663" width="26.333333333333343" height="19.333333333333371"/>
+                        <rect key="frame" x="108" y="255.66666666666666" width="26.333333333333343" height="19.333333333333343"/>
                         <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </imageView>
                 </subviews>
@@ -88,9 +78,7 @@
                     <constraint firstItem="k8b-zg-WLo" firstAttribute="top" secondItem="31Z-1v-ItN" secondAttribute="bottom" constant="20" id="MAE-2Y-02l"/>
                     <constraint firstAttribute="trailing" secondItem="31Z-1v-ItN" secondAttribute="trailing" id="UPE-cb-Fha"/>
                     <constraint firstItem="8fW-GU-65a" firstAttribute="top" secondItem="WH5-Pi-j4c" secondAttribute="bottom" constant="10" id="V3H-hS-p5g"/>
-                    <constraint firstItem="lTJ-TE-QnE" firstAttribute="top" secondItem="k8b-zg-WLo" secondAttribute="bottom" constant="10" id="Vew-C5-f87"/>
                     <constraint firstAttribute="trailingMargin" secondItem="k8b-zg-WLo" secondAttribute="trailing" constant="10" id="X9z-Jf-YWE"/>
-                    <constraint firstAttribute="trailing" secondItem="lTJ-TE-QnE" secondAttribute="trailing" constant="10" id="YSH-5r-tnE"/>
                     <constraint firstItem="kQm-Ns-oQa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="aAp-WM-huN"/>
                     <constraint firstItem="31Z-1v-ItN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ctM-X3-ISC"/>
                     <constraint firstItem="WH5-Pi-j4c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="wGj-ud-yne"/>
@@ -101,7 +89,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="aboutGame" destination="kQm-Ns-oQa" id="DdR-sO-0cd"/>
-                <outlet property="addCartButton" destination="lTJ-TE-QnE" id="e7Q-Oz-bcO"/>
                 <outlet property="gameName" destination="WH5-Pi-j4c" id="1EG-2j-3np"/>
                 <outlet property="likeButton" destination="k8b-zg-WLo" id="4kz-Xe-RCN"/>
                 <outlet property="titleImage" destination="31Z-1v-ItN" id="RAC-FX-3y9"/>

@@ -12,8 +12,8 @@ class GamePageCell: UITableViewCell {
     @IBOutlet weak var gameName: UILabel!
     @IBOutlet weak var aboutGame: UILabel!
     @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var addCartButton: UIButton!
     var likeAction: ((Bool) -> Void)?
+    var isLiked: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,35 +25,31 @@ class GamePageCell: UITableViewCell {
         
     }
     
-    @IBAction func addCartButtonAction(_ sender: Any) {
-        
-    }
-    
     @IBAction func likeButtonAction(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        let liked = sender.isSelected
-        sender.setImage(UIImage(systemName: sender.isSelected ? "heart.fill" : "heart"), for: .normal)
-        sender.backgroundColor = .clear
-        likeAction?(liked)
+        isLiked.toggle()
+        updateLikeButton()
+        likeAction?(isLiked)
     }
     
+    private func updateLikeButton() {
+            let imageName = isLiked ? "heart.fill" : "heart"
+            likeButton.setImage(UIImage(systemName: imageName), for: .normal)
+        }
     
-    func configure(item: Game, addCartHidden: Bool) {
+    func configure(item: Game) {
         titleImage.image = UIImage(named: item.customImage ?? "")
         gameName.text = item.name
         aboutGame.text = "\(item.about ?? "")"
-        addCartButton.isHidden = addCartHidden
     }
     
-    func configureForCart(item: GameForCart, addCartHidden: Bool) {
+    func configureForCart(item: GameForCart) {
         titleImage.image = UIImage(named: item.customImage ?? "")
         gameName.text = item.name
         aboutGame.text = "\(String(describing: item.about))"
-        addCartButton.isHidden = addCartHidden
     }
     
     func configureLikeButton(isLiked: Bool) {
-        let liked = isLiked
-        likeButton.setImage(UIImage(systemName: liked ? "heart.fill" : "heart"), for: .normal)
+        self.isLiked = isLiked
+        updateLikeButton()
     }
 }

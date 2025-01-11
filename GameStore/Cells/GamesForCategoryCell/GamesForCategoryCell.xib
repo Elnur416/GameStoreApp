@@ -49,14 +49,8 @@
                             <constraint firstAttribute="height" constant="30" id="Qfy-gP-iG3"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PGw-tb-bk2">
-                        <rect key="frame" x="405.33333333333331" y="0.0" width="67.666666666666686" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK4-r3-XSy">
-                        <rect key="frame" x="434.33333333333331" y="31" width="38.666666666666686" height="20.333333333333329"/>
+                        <rect key="frame" x="434.33333333333331" y="20" width="38.666666666666686" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -69,14 +63,12 @@
                     <constraint firstItem="1HR-vm-iCJ" firstAttribute="leading" secondItem="YhR-Wf-JoD" secondAttribute="trailing" constant="10" id="Ypv-tb-ddh"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AI4-Oz-UIs" secondAttribute="trailing" constant="20" id="Zb9-fT-hnW"/>
                     <constraint firstItem="1TD-6y-aF1" firstAttribute="leading" secondItem="1HR-vm-iCJ" secondAttribute="trailing" constant="10" id="cy4-xd-Z4U"/>
-                    <constraint firstItem="PGw-tb-bk2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dU6-2a-FB6"/>
                     <constraint firstItem="1HR-vm-iCJ" firstAttribute="top" secondItem="AI4-Oz-UIs" secondAttribute="bottom" constant="10" id="fid-Av-wmY"/>
                     <constraint firstItem="A16-Qj-acC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="gOL-Bq-Vpk"/>
                     <constraint firstItem="1TD-6y-aF1" firstAttribute="top" secondItem="AI4-Oz-UIs" secondAttribute="bottom" constant="10" id="hSW-xk-bi3"/>
-                    <constraint firstItem="rK4-r3-XSy" firstAttribute="top" secondItem="PGw-tb-bk2" secondAttribute="bottom" constant="10" id="jmf-iU-AFi"/>
-                    <constraint firstAttribute="trailing" secondItem="PGw-tb-bk2" secondAttribute="trailing" constant="10" id="pTO-d3-Bxh"/>
                     <constraint firstItem="AI4-Oz-UIs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="rHC-CR-57s"/>
                     <constraint firstItem="YhR-Wf-JoD" firstAttribute="top" secondItem="AI4-Oz-UIs" secondAttribute="bottom" constant="10" id="tda-xp-Gai"/>
+                    <constraint firstItem="rK4-r3-XSy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="vjb-58-mh0"/>
                     <constraint firstItem="A16-Qj-acC" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xdb-oT-qRz"/>
                 </constraints>
             </tableViewCellContentView>
@@ -86,7 +78,6 @@
                 <constraint firstItem="A16-Qj-acC" firstAttribute="height" secondItem="KGk-i7-Jjw" secondAttribute="height" multiplier="0.905759" id="xJO-CH-rvH"/>
             </constraints>
             <connections>
-                <outlet property="discountPrice" destination="PGw-tb-bk2" id="vAP-ij-i3z"/>
                 <outlet property="price" destination="rK4-r3-XSy" id="Y2B-LH-9dt"/>
                 <outlet property="titleImage" destination="A16-Qj-acC" id="7II-B6-KWz"/>
                 <outlet property="titleName" destination="AI4-Oz-UIs" id="ezB-Cw-FoQ"/>

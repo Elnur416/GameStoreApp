@@ -15,7 +15,7 @@ class GamePageViewModel {
     let adapterForWishlist = FileManagerForWishlist()
     var gamesForCart = [GameForCart]()
     var gamesForWishlist = [GameForCart]()
-    var liked: Bool?
+    var isGameLiked: Bool?
     
     func convertModel(game: Game) -> GameForCart {
         return GameForCart(
@@ -57,17 +57,32 @@ class GamePageViewModel {
     }
     
     func removeFromWishlist() {
-        guard let selectedGame = selectedGame else {
-            print("Error: selectedGame is nil")
-            return
+        if selectedGame != nil {
+            let game = convertModel(game: selectedGame!)
+            guard let index = gamesForWishlist.firstIndex(of: game) else { return }
+            gamesForWishlist.remove(at: index)
+        } else {
+            let game = selectedGameFromCart
+            guard let index = gamesForWishlist.firstIndex(of: game!) else { return }
+            gamesForWishlist.remove(at: index)
         }
-        let gameForWishlist = convertModel(game: selectedGame)
-        guard let index = gamesForWishlist.firstIndex(of: gameForWishlist) else {
-            print("Error: Game not found in wishlist")
-            return
-        }
-        gamesForWishlist.remove(at: index)
         adapterForWishlist.writeData(game: gamesForWishlist)
+    }
+    
+    func isGameLikedAction() -> Bool {
+        if selectedGame != nil {
+            if gamesForWishlist.contains(where: { $0.name == selectedGame!.name }) {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            if gamesForWishlist.contains(where: { $0.name == selectedGameFromCart!.name }) {
+                return true
+            } else {
+                return false
+            }
+        }
     }
 }
 

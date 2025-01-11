@@ -13,6 +13,7 @@ class ExploreViewModel {
     private let managerGame = CoreDataForGame(context: AppDelegate().persistentContainer.viewContext)
     let manager = UserDefaultsManager()
     var filteredGames = [Game]()
+    var popularGames = [Game]()
     
     func loadData() {
         gameData.loadData()

@@ -10,7 +10,7 @@ import Foundation
 class FileManagerForCart {
     func getPath() -> URL {
         let files = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let path = files[0].appendingPathComponent("Games.json")
+        let path = files[0].appendingPathComponent("Cart.json")
 //        print(path)
         return path
     }
