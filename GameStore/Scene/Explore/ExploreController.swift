@@ -8,7 +8,6 @@
 import UIKit
 
 class ExploreController: UIViewController {
-    
     @IBOutlet weak var collection: UICollectionView!
     private let searchController = UISearchController(searchResultsController: SearchResultsViewController())
     let viewModel = ExploreViewModel()

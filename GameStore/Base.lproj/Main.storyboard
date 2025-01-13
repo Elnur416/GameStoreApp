@@ -349,11 +349,13 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h7J-B8-tyq">
                                                 <rect key="frame" x="0.0" y="80.666666666666686" width="322" height="34"/>
+                                                <color key="backgroundColor" red="0.050132181599999999" green="0.065742189640000004" blue="0.092234925039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d77-zy-rSo">
                                                 <rect key="frame" x="0.0" y="134.66666666666669" width="322" height="34"/>
+                                                <color key="backgroundColor" red="0.050132181599999999" green="0.065742189640000004" blue="0.092234925039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
@@ -554,21 +556,25 @@
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sLy-iR-Nsg">
                                                 <rect key="frame" x="0.0" y="80.666666666666686" width="322" height="34"/>
+                                                <color key="backgroundColor" red="0.050132181599999999" green="0.065742189640000004" blue="0.092234925039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone  number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7wh-nw-TnT">
                                                 <rect key="frame" x="0.0" y="134.66666666666669" width="322" height="34"/>
+                                                <color key="backgroundColor" red="0.050132181599999999" green="0.065742189640000004" blue="0.092234925039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Th-GA-jwU">
                                                 <rect key="frame" x="0.0" y="188.66666666666663" width="322" height="34"/>
+                                                <color key="backgroundColor" red="0.050132181599999999" green="0.065742189640000004" blue="0.092234925039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WqX-4q-2L9">
                                                 <rect key="frame" x="0.0" y="242.66666666666663" width="322" height="34"/>
+                                                <color key="backgroundColor" red="0.050132181599999999" green="0.065742189640000004" blue="0.092234925039999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
@@ -857,9 +863,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bU-No-2Hj">
                                         <rect key="frame" x="20" y="12.666666666666629" width="278" height="35"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Confirm Order">
-                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                        </buttonConfiguration>
+                                        <buttonConfiguration key="configuration" style="filled" title="Confirm Order"/>
                                         <connections>
                                             <action selector="confirmOrderButtonAction:" destination="hu2-qQ-Sw0" eventType="touchUpInside" id="PGl-Gl-Kwr"/>
                                         </connections>
@@ -896,6 +900,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nMt-3e-O2J"/>
                     <connections>
+                        <outlet property="confirmButton" destination="3bU-No-2Hj" id="tTG-s4-PHM"/>
                         <outlet property="table" destination="CbF-1l-8CG" id="IFP-8t-7W9"/>
                         <outlet property="totalPrice" destination="hzu-ty-G41" id="ug9-Hh-oCO"/>
                     </connections>
@@ -1019,6 +1024,9 @@
                     <navigationItem key="navigationItem" id="7Ui-mN-tfX"/>
                     <connections>
                         <outlet property="collection" destination="PhI-wM-o7P" id="FL4-x3-kmW"/>
+                        <outlet property="email" destination="RMH-7v-YCW" id="oS4-al-37Q"/>
+                        <outlet property="fullname" destination="7FC-xf-h3N" id="41h-Rq-eP7"/>
+                        <outlet property="phone" destination="r9Y-zG-ooV" id="oAr-99-zqN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVl-dB-7Br" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1054,6 +1062,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qL-LS-LuN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8678" y="920"/>
+        </scene>
+        <!--Success Controller-->
+        <scene sceneID="0gg-0a-Chv">
+            <objects>
+                <viewController storyboardIdentifier="SuccessController" id="swK-bG-Da8" customClass="SuccessController" customModule="GameStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zMW-eM-0yJ">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games added to your collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuI-DP-mcp">
+                                <rect key="frame" x="20" y="555" width="362" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99M-Ft-ra1">
+                                <rect key="frame" x="20" y="770" width="362" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5bT-OW-5si"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Ok"/>
+                                <connections>
+                                    <action selector="okButtonAction:" destination="swK-bG-Da8" eventType="touchUpInside" id="Yoi-VW-i0U"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamepad" translatesAutoresizingMaskIntoConstraints="NO" id="jEV-gY-5K1">
+                                <rect key="frame" x="81" y="387" width="240" height="128"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Succesfull" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wt-j2-Muj">
+                                <rect key="frame" x="20" y="327" width="362" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="x82-hF-5hV"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tuI-DP-mcp" firstAttribute="leading" secondItem="x82-hF-5hV" secondAttribute="leading" constant="20" id="7Q8-vC-0pn"/>
+                            <constraint firstItem="jEV-gY-5K1" firstAttribute="centerX" secondItem="x82-hF-5hV" secondAttribute="centerX" id="9r0-ko-fM4"/>
+                            <constraint firstItem="tuI-DP-mcp" firstAttribute="top" secondItem="jEV-gY-5K1" secondAttribute="bottom" constant="40" id="FMF-sL-5yN"/>
+                            <constraint firstItem="2Wt-j2-Muj" firstAttribute="leading" secondItem="x82-hF-5hV" secondAttribute="leading" constant="20" id="IXl-y9-5S4"/>
+                            <constraint firstItem="jEV-gY-5K1" firstAttribute="centerY" secondItem="x82-hF-5hV" secondAttribute="centerY" id="MMz-gf-MMd"/>
+                            <constraint firstItem="x82-hF-5hV" firstAttribute="trailing" secondItem="tuI-DP-mcp" secondAttribute="trailing" constant="20" id="NUO-wM-hej"/>
+                            <constraint firstItem="x82-hF-5hV" firstAttribute="bottom" secondItem="99M-Ft-ra1" secondAttribute="bottom" constant="20" id="bDy-Zy-a78"/>
+                            <constraint firstItem="x82-hF-5hV" firstAttribute="trailing" secondItem="2Wt-j2-Muj" secondAttribute="trailing" constant="20" id="bxU-WI-LyS"/>
+                            <constraint firstItem="jEV-gY-5K1" firstAttribute="width" secondItem="zMW-eM-0yJ" secondAttribute="width" multiplier="0.597015" id="icS-7a-KG6"/>
+                            <constraint firstItem="x82-hF-5hV" firstAttribute="trailing" secondItem="99M-Ft-ra1" secondAttribute="trailing" constant="20" id="n8b-1g-PeY"/>
+                            <constraint firstItem="jEV-gY-5K1" firstAttribute="top" secondItem="2Wt-j2-Muj" secondAttribute="bottom" constant="40" id="pmB-iR-GGa"/>
+                            <constraint firstItem="jEV-gY-5K1" firstAttribute="height" secondItem="zMW-eM-0yJ" secondAttribute="height" multiplier="0.146453" id="xdD-lO-2fT"/>
+                            <constraint firstItem="99M-Ft-ra1" firstAttribute="leading" secondItem="x82-hF-5hV" secondAttribute="leading" constant="20" id="zf4-aa-5gl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="okButton" destination="99M-Ft-ra1" id="JS4-vO-Wzl"/>
+                        <outlet property="titleLabel" destination="2Wt-j2-Muj" id="ofX-Rh-zr4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ucm-2M-XH5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9503" y="920"/>
         </scene>
         <!--Profile-->
         <scene sceneID="r9t-i1-0Yo">
@@ -1092,9 +1162,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-tE-Qjb">
                                         <rect key="frame" x="20" y="12.666666666666629" width="263.33333333333331" height="35"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Add Cart">
-                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                        </buttonConfiguration>
+                                        <buttonConfiguration key="configuration" style="filled" title="Add Cart"/>
                                         <connections>
                                             <action selector="addCartButtonAction:" destination="opa-Wi-2cy" eventType="touchUpInside" id="DeS-Lj-VHb"/>
                                         </connections>
@@ -1130,6 +1198,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addCartButton" destination="OwC-tE-Qjb" id="nuI-VW-fsl"/>
                         <outlet property="buyView" destination="W7G-OQ-WpD" id="dWL-VS-62l"/>
                         <outlet property="price" destination="Ixl-jo-B14" id="1M3-UN-dbl"/>
                         <outlet property="table" destination="d4U-Kc-k2v" id="1jA-3B-cKg"/>
@@ -1139,16 +1208,16 @@
             </objects>
             <point key="canvasLocation" x="8679" y="213"/>
         </scene>
-        <!--View Controller-->
+        <!--Card Register Controller-->
         <scene sceneID="71Q-rU-DTm">
             <objects>
-                <viewController id="maa-SL-Of5" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CardRegisterController" id="maa-SL-Of5" customClass="CardRegisterController" customModule="GameStore" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fQU-Me-j9K">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gZ1-ZK-gMf">
-                                <rect key="frame" x="20" y="102" width="362" height="114.66666666666669"/>
+                                <rect key="frame" x="20" y="102" width="362" height="512.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Register" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTU-tc-Kcb">
                                         <rect key="frame" x="0.0" y="0.0" width="362" height="20.333333333333332"/>
@@ -1162,22 +1231,54 @@
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bankCard" translatesAutoresizingMaskIntoConstraints="NO" id="QXs-Zd-HMq">
+                                        <rect key="frame" x="0.0" y="80.666666666666657" width="362" height="200"/>
+                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q4D-7E-Y8M">
-                                        <rect key="frame" x="0.0" y="80.666666666666657" width="362" height="34"/>
+                                        <rect key="frame" x="0.0" y="300.66666666666669" width="362" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Expiration date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o0x-rb-Sy0">
+                                        <rect key="frame" x="0.0" y="354.66666666666669" width="362" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CVC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5vT-8d-csi">
+                                        <rect key="frame" x="0.0" y="408.66666666666669" width="362" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Exo-kZ-3pW">
+                                        <rect key="frame" x="0.0" y="462.66666666666663" width="362" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="hMR-HB-bXE"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Submit"/>
+                                        <connections>
+                                            <action selector="submitButtonAction:" destination="maa-SL-Of5" eventType="touchUpInside" id="saF-D5-5JA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4fg-LL-f9s"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="QXs-Zd-HMq" firstAttribute="height" secondItem="fQU-Me-j9K" secondAttribute="height" multiplier="0.228833" id="3ol-tR-HeF"/>
                             <constraint firstItem="gZ1-ZK-gMf" firstAttribute="width" secondItem="fQU-Me-j9K" secondAttribute="width" multiplier="0.900498" id="jn3-Up-jsO"/>
                             <constraint firstItem="gZ1-ZK-gMf" firstAttribute="top" secondItem="4fg-LL-f9s" secondAttribute="top" constant="40" id="uRB-PD-5Eu"/>
                             <constraint firstItem="gZ1-ZK-gMf" firstAttribute="centerX" secondItem="fQU-Me-j9K" secondAttribute="centerX" id="yse-8T-lhp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cardNumberTxt" destination="q4D-7E-Y8M" id="RW5-rS-FwM"/>
+                        <outlet property="cvcTxt" destination="5vT-8d-csi" id="TWO-h3-5FB"/>
+                        <outlet property="expiryDateTxt" destination="o0x-rb-Sy0" id="wUr-8h-ZZe"/>
+                        <outlet property="submitButton" destination="Exo-kZ-3pW" id="aew-Bz-uG2"/>
+                        <outlet property="titleLabel" destination="NTU-tc-Kcb" id="Ze5-UE-3yM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25r-5s-y9k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1210,6 +1311,7 @@
         <image name="49" width="256" height="384"/>
         <image name="50" width="736" height="1039"/>
         <image name="alien" width="600" height="847"/>
+        <image name="bankCard" width="705" height="557"/>
         <image name="cart" catalog="system" width="128" height="102"/>
         <image name="cod3" width="683" height="1024"/>
         <image name="codmw3" width="250" height="383"/>
@@ -1218,6 +1320,7 @@
         <image name="eldenring" width="700" height="1050"/>
         <image name="fortnite" width="300" height="420"/>
         <image name="gamecontroller" catalog="system" width="128" height="79"/>
+        <image name="gamepad" width="498" height="476"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="nim" width="736" height="1034"/>
@@ -1227,13 +1330,10 @@
         <image name="thequarry" width="736" height="1117"/>
         <image name="untilDaylight" width="390" height="600"/>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -10,6 +10,7 @@ import UIKit
 class CartController: UIViewController {
     @IBOutlet private weak var table: UITableView!
     @IBOutlet weak var totalPrice: UILabel!
+    @IBOutlet weak var confirmButton: UIButton!
     let viewModel = CartViewModel()
     let refreshControl = UIRefreshControl()
     
@@ -18,16 +19,14 @@ class CartController: UIViewController {
 
         viewModel.readData()
         configureUI()
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        table.refreshControl = refreshControl
+        viewModel.readFromCollection()
     }
     
-    @objc func refresh(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
         viewModel.readData()
+        viewModel.readFromCollection()
         table.reloadData()
-        refreshControl.endRefreshing()
-        let formattedPrice = String(format: "%.2f", viewModel.getTotalPrice())
-        totalPrice.text = "\(formattedPrice)"
+        configureTotalPrice()
     }
     
     func configureUI() {
@@ -35,12 +34,35 @@ class CartController: UIViewController {
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
+        let gradient = UIImage.gImage(frame: confirmButton.bounds, colours: [.red, .blue])
+        confirmButton.tintColor = UIColor(patternImage: gradient)
+        configureTotalPrice()
+    }
+    
+    func configureTotalPrice() {
         let formattedPrice = String(format: "%.2f", viewModel.getTotalPrice())
         totalPrice.text = "\(formattedPrice)"
     }
     
     @IBAction func confirmOrderButtonAction(_ sender: Any) {
-        
+        if viewModel.games.isEmpty {
+            let alert = UIAlertController(title: "Error", message: "Cart is empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
+            present(alert, animated: true)
+        } else {
+            if viewModel.manager.getBool(key: .isCardAdded) {
+                viewModel.getCollection()
+                viewModel.games.removeAll()
+                viewModel.writeData()
+                configureTotalPrice()
+                table.reloadData()
+                let controller = storyboard?.instantiateViewController(withIdentifier: "\(SuccessController.self)") as! SuccessController
+                navigationController?.present(controller, animated: true)
+            } else {
+                let controller = storyboard?.instantiateViewController(withIdentifier: "\(CardRegisterController.self)") as! CardRegisterController
+                navigationController?.present(controller, animated: true)
+            }
+        }
     }
 }
 
@@ -70,8 +92,7 @@ extension CartController: UITableViewDataSource, UITableViewDelegate {
             viewModel.games.remove(at: indexPath.row)
             viewModel.writeData()
             table.deleteRows(at: [indexPath], with: .fade)
-            let formattedPrice = String(format: "%.2f", viewModel.getTotalPrice())
-            totalPrice.text = "\(formattedPrice)"
+            configureTotalPrice()
             table.reloadData()
             return
         }

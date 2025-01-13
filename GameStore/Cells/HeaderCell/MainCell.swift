@@ -23,7 +23,8 @@ class MainCell: UICollectionViewCell {
     func configureUI() {
         titleImage.layer.cornerRadius = 30
         titleView.layer.cornerRadius = 30
-//        titleView.backgroundColor = .orange
+        let gradient = UIImage.gImage(frame: titleView.bounds, colours: [.red, .blue])
+        titleView.backgroundColor = UIColor(patternImage: gradient)
     }
     
     func configure(item: Game) {

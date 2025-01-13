@@ -10,7 +10,7 @@ import Foundation
 class FileManagerHelper {
     func getPath() -> URL {
         let files = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let path = files[0].appendingPathComponent("User.json")
+        let path = files[0].appendingPathComponent("Users.json")
 //        print(path)
         return path
     }

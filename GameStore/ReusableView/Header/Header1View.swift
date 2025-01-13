@@ -9,9 +9,10 @@ import UIKit
 
 class Header1View: UICollectionReusableView {
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var allGamesLabel: UILabel!
     private var games = [Game]()
     var popularGames = [Game]()
-    @IBOutlet weak var title: UILabel!
     @IBOutlet weak var pageControl: UIPageControl!
     var itemSelection: ((Int) -> Void)?
     
@@ -27,6 +28,11 @@ class Header1View: UICollectionReusableView {
         collection.register(UINib(nibName: "MainCell", bundle: nil), forCellWithReuseIdentifier: "MainCell")
         collection.showsHorizontalScrollIndicator = false
         pageControl.currentPage = 0
+        let gradient = UIImage.gImage(frame: titleLabel.bounds, colours: [.red, .blue])
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
+        titleLabel.textColor = UIColor(patternImage: gradient)
+        allGamesLabel.textColor = UIColor(patternImage: gradient)
+        pageControl.tintColor = UIColor(patternImage: gradient)
     }
     
     func configureData(data: [Game]) {

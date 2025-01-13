@@ -11,6 +11,8 @@ class UserDefaultsManager {
     enum UserDefaultsTypes: String {
         case isLoggedIn = "LoggedIn"
         case isDataLoaded = "CategoryLoaded"
+        case isCardAdded = "CardAdded"
+        case getUserIndex = ""
     }
     
     func setValue(value: Any, key: UserDefaultsTypes) {
@@ -19,5 +21,9 @@ class UserDefaultsManager {
     
     func getBool(key: UserDefaultsTypes) -> Bool {
         UserDefaults.standard.bool(forKey: key.rawValue)
+    }
+    
+    func getIndex(key: UserDefaultsTypes) -> Int {
+        UserDefaults.standard.integer(forKey: key.rawValue)
     }
 }

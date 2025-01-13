@@ -8,15 +8,20 @@
 import Foundation
 
 class FileManagerForCart {
-    func getPath() -> URL {
+    enum FileManagerName: String {
+        case cart = "Cart.json"
+        case wishlist = "Wishlist.json"
+        case collection = "Collection.json"
+    }
+    func getPath(fileName: FileManagerName) -> URL {
         let files = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let path = files[0].appendingPathComponent("Cart.json")
+        let path = files[0].appendingPathComponent(fileName.rawValue)
 //        print(path)
         return path
     }
     
-    func readData(completion: (([GameForCart]) -> Void)) {
-        if let data = try? Data(contentsOf: getPath()) {
+    func readData(fileName: FileManagerName, completion: (([GameForCart]) -> Void)) {
+        if let data = try? Data(contentsOf: getPath(fileName: fileName)) {
             do {
                 let games = try JSONDecoder().decode([GameForCart].self, from: data)
                 completion(games)
@@ -26,10 +31,10 @@ class FileManagerForCart {
         }
     }
     
-    func writeData(game: [GameForCart]) {
+    func writeData(fileName: FileManagerName, game: [GameForCart]) {
         do {
             let data = try JSONEncoder().encode(game)
-            try? data.write(to: getPath())
+            try? data.write(to: getPath(fileName: fileName))
         } catch {
             print(error.localizedDescription)
         }

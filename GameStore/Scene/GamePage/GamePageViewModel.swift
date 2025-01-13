@@ -12,9 +12,9 @@ class GamePageViewModel {
     var selectedGameFromCart: GameForCart?
     let managerGame = CoreDataForGame(context: AppDelegate().persistentContainer.viewContext)
     let adapter = FileManagerForCart()
-    let adapterForWishlist = FileManagerForWishlist()
     var gamesForCart = [GameForCart]()
     var gamesForWishlist = [GameForCart]()
+    var gamesOnCollection = [GameForCart]()
     var isGameLiked: Bool?
     
     func convertModel(game: Game) -> GameForCart {
@@ -29,7 +29,7 @@ class GamePageViewModel {
     }
     
     func readData() {
-        adapter.readData { data in
+        adapter.readData(fileName: .cart) { data in
             self.gamesForCart = data
         }
     }
@@ -37,11 +37,11 @@ class GamePageViewModel {
     func writeData() {
         let gameForCart = convertModel(game: selectedGame!)
         gamesForCart.append(gameForCart)
-        adapter.writeData(game: gamesForCart)
+        adapter.writeData(fileName: .cart, game: gamesForCart)
     }
     
     func readDataForWishlist() {
-        adapterForWishlist.readData { data in
+        adapter.readData(fileName: .wishlist) { data in
             self.gamesForWishlist = data
         }
     }
@@ -53,7 +53,7 @@ class GamePageViewModel {
         } else {
             gamesForWishlist.append(selectedGameFromCart!)
         }
-        adapterForWishlist.writeData(game: gamesForWishlist)
+        adapter.writeData(fileName: .wishlist, game: gamesForWishlist)
     }
     
     func removeFromWishlist() {
@@ -66,7 +66,7 @@ class GamePageViewModel {
             guard let index = gamesForWishlist.firstIndex(of: game!) else { return }
             gamesForWishlist.remove(at: index)
         }
-        adapterForWishlist.writeData(game: gamesForWishlist)
+        adapter.writeData(fileName: .wishlist, game: gamesForWishlist)
     }
     
     func isGameLikedAction() -> Bool {
@@ -82,6 +82,12 @@ class GamePageViewModel {
             } else {
                 return false
             }
+        }
+    }
+    
+    func readDataFromCollection() {
+        adapter.readData(fileName: .collection) { data in
+            self.gamesOnCollection = data
         }
     }
 }

@@ -8,11 +8,11 @@
 import Foundation
 
 class WishListViewModel {
-    let adapter = FileManagerForWishlist()
+    let adapter = FileManagerForCart()
     var games = [GameForCart]()
     
     func readData() {
-        adapter.readData { data in
+        adapter.readData(fileName: .wishlist) { data in
             self.games = data
         }
     }

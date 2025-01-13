@@ -69,7 +69,7 @@ class LoginController: UIViewController {
         toggleButton.setImage(UIImage(systemName: "eye"), for: .selected)
         toggleButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         toggleButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-        toggleButton.tintColor = .black
+        toggleButton.tintColor = .white
         passwordTxt.rightView = toggleButton
         passwordTxt.rightViewMode = .always
     }

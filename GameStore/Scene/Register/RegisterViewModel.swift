@@ -23,7 +23,13 @@ class RegisterViewModel {
         if users.contains(where: { $0.fullname == user.fullname && $0.phone == user.phone && $0.email == user.email && $0.password == user.password}) {
             error?()
         } else {
+            users.append(user)
             adapter.writeData(user: users)
         }
+    }
+    
+    func getUserIndex(email: String, password: String) {
+        guard let index = users.firstIndex(where: { $0.email == email && $0.password == password }) else { return }
+        manager.setValue(value: index, key: .getUserIndex)
     }
 }

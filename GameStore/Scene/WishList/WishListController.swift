@@ -17,14 +17,11 @@ class WishListController: UIViewController {
 
         configureUI()
         viewModel.readData()
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        table.refreshControl = refreshControl
     }
     
-    @objc func refresh(_ sender: Any) {
+    override func viewWillAppear(_ animated: Bool) {
         viewModel.readData()
         table.reloadData()
-        refreshControl.endRefreshing()
     }
     
     func configureUI() {

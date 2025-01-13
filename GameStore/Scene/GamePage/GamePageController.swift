@@ -11,6 +11,7 @@ class GamePageController: UIViewController {
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var buyView: UIView!
+    @IBOutlet weak var addCartButton: UIButton!
     let viewModel = GamePageViewModel()
     
     override func viewDidLoad() {
@@ -19,6 +20,7 @@ class GamePageController: UIViewController {
         configureUI()
         viewModel.readData()
         viewModel.readDataForWishlist()
+        viewModel.readDataFromCollection()
     }
     
     @IBAction func addCartButtonAction(_ sender: UIButton) {
@@ -28,10 +30,16 @@ class GamePageController: UIViewController {
                 alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
                 present(alert, animated: true)
             } else {
-                let alert = UIAlertController(title: "Success", message: "\(viewModel.selectedGame?.name ?? "") added to cart", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
-                present(alert, animated: true)
-                viewModel.writeData()
+                if viewModel.gamesOnCollection.contains(viewModel.convertModel(game: viewModel.selectedGame!)) {
+                    let alert = UIAlertController(title: "Error", message: "\(viewModel.selectedGame?.name ?? "") already on your collection", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
+                    present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Success", message: "\(viewModel.selectedGame?.name ?? "") added to cart", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                    present(alert, animated: true)
+                    viewModel.writeData()
+                }
             }
         } else {
             if viewModel.gamesForCart.contains(viewModel.selectedGameFromCart!) {
@@ -39,10 +47,16 @@ class GamePageController: UIViewController {
                 alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
                 present(alert, animated: true)
             } else {
-                let alert = UIAlertController(title: "Success", message: "\(viewModel.selectedGameFromCart?.name ?? "") added to cart", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
-                present(alert, animated: true)
-                viewModel.writeData()
+                if viewModel.gamesOnCollection.contains(viewModel.selectedGameFromCart!) {
+                    let alert = UIAlertController(title: "Error", message: "\(viewModel.selectedGameFromCart?.name ?? "") already on your collection", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .destructive))
+                    present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Success", message: "\(viewModel.selectedGameFromCart?.name ?? "") added to cart", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                    present(alert, animated: true)
+                    viewModel.writeData()
+                }
             }
         }
     }
@@ -56,6 +70,8 @@ class GamePageController: UIViewController {
         } else {
             price.text = "\(viewModel.selectedGameFromCart?.price ?? 0)"
         }
+        let gradient = UIImage.gImage(frame: addCartButton.bounds, colours: [.red, .blue])
+        addCartButton.tintColor = UIColor(patternImage: gradient)
     }
 }
 

@@ -161,76 +161,67 @@ class GameDatas {
                                category: category4)
         gameData.saveData(game: game13)
         
-        let game14 = GameModel(name: "The Last of Us Trials",
-                               mainImage: "thelastofustrials",
-                               customImage: "thelastofustrials2",
-                               price: 49.99,
-                               isPopular: true,
-                               about: "The developers describe the content like this: Players use weapons such as pistols, rifles, and crafted explosives as well as melee attacks with chokeholds, bats, and metal pipes to defend themselves from the infected and other human survivors. Players can also engage in stealth combat sequences involving a close-up camera view. Weapon and explosive attacks can result in decapitation and/or dismemberment. Scenes depict intense acts of violence, including themes of suicide and torture. During the game, a character makes sexual remarks about an adult magazine and a young character is shown drinking alcohol. Strong language is used frequently in dialogue.",
-                               category: category3)
-        gameData.saveData(game: game14)
-        
-        let game15 = GameModel(name: "Nim",
+        let game14 = GameModel(name: "Nim",
                                mainImage: "nim",
                                customImage: "nim2",
                                price: 19.99,
                                isPopular: false,
                                about: "In a vast, inhospitable alien world, you are the expendable. Cloned from DNA for a single purpose: to test the most devastating, over-the-top, and downright absurd weaponry known to the galaxy. Welcome to NIMRODS, the ultimate survival roguelite shooter where the guns you craft are the legacy you leave.",
                                category: category5)
-        gameData.saveData(game: game15)
+        gameData.saveData(game: game14)
         
-        let game16 = GameModel(name: "Alien",
+        let game15 = GameModel(name: "Alien",
                                mainImage: "alien",
                                customImage: "alien2",
                                price: 69.99,
                                isPopular: true,
                                about: "Discover the true meaning of fear in Alien: Isolation, a survival horror set in an atmosphere of constant dread and mortal danger. Fifteen years after the events of Alien™, Ellen Ripley’s daughter, Amanda enters a desperate battle for survival, on a mission to unravel the truth behind her mother's disappearance. As Amanda, you will navigate through an increasingly volatile world as you find yourself confronted on all sides by a panicked, desperate population and an unpredictable, ruthless Alien.",
                                category: category6)
-        gameData.saveData(game: game16)
+        gameData.saveData(game: game15)
         
-        let game17 = GameModel(name: "Mortal Kombat X",
+        let game16 = GameModel(name: "Mortal Kombat X",
                                mainImage: "mortalkombatx",
                                customImage: "mortalkombatx2",
                                price: 49.99,
                                isPopular: true,
                                about: "MK is back and better than ever in the next evolution of the iconic franchise. The all new Custom Character Variations give you unprecedented control of your fighters to make them your own. The new graphics engine showcases every skull-shattering, eye-popping moment, bringing you so close to the fight you can feel it. Featuring a roster of new and returning Klassic Fighters, Mortal Kombat's best-in-class cinematic story mode continues the epic saga over 25 years in the making.",
                                category: category6)
-        gameData.saveData(game: game17)
+        gameData.saveData(game: game16)
         
-        let game18 = GameModel(name: "Spider Man",
+        let game17 = GameModel(name: "Spider Man",
                                mainImage: "spiderman",
                                customImage: "spiderman2",
                                price: 69.99,
                                isPopular: true,
                                about: "Developed by Insomniac Games in collaboration with Marvel, and optimized for PC by Nixxes Software, Marvel's Spider-Man Remastered on PC introduces an experienced Peter Parker who’s fighting big crime and iconic villains in Marvel’s New York. At the same time, he’s struggling to balance his chaotic personal life and career while the fate of Marvel’s New York rests upon his shoulders.",
                                category: category2)
-        gameData.saveData(game: game18)
+        gameData.saveData(game: game17)
         
-        let game19 = GameModel(name: "Fortnite",
+        let game18 = GameModel(name: "Fortnite",
                                mainImage: "fortnite",
                                customImage: "fortnite2",
                                price: 19.99,
                                isPopular: true,
                                about: "One of the most popular online action games of all time, Fortnite delivers constant free updates—new game modes, maps, equipment and, most importantly, hats. Nine distinct classes provide a broad range of tactical abilities and personalities, and lend themselves to a variety of player skills.",
                                category: category3)
-        gameData.saveData(game: game19)
+        gameData.saveData(game: game18)
         
-        let game20 = GameModel(name: "Tomb Raider",
+        let game19 = GameModel(name: "Tomb Raider",
                                mainImage: "tombraider",
                                customImage: "tombraider2",
                                price: 49.99,
                                isPopular: false,
                                about: "Rise of the Tomb Raider: 20 Year Celebration includes the base game and Season Pass featuring all-new content. Explore Croft Manor in the new “Blood Ties” story, then defend it against a zombie invasion in “Lara’s Nightmare”. Survive extreme conditions with a friend in the new online Co-Op Endurance mode, and brave the new “Extreme Survivor” difficulty. Also features an outfit and weapon inspired by Tomb Raider III, and 5 classic Lara skins. ",
                                category: category1)
-        gameData.saveData(game: game20)
+        gameData.saveData(game: game19)
         
-        let game21 = GameModel(name: "Far Cry 4",
+        let game20 = GameModel(name: "Far Cry 4",
                                mainImage: "farcry4",
                                customImage: "farcry42",
                                price: 39.99,
                                isPopular: false,
                                about: "Hidden in the towering Himalayas lies Kyrat, a country steeped in tradition and violence. You are Ajay Ghale. Traveling to Kyrat to fulfill your mother’s dying wish, you find yourself caught up in a civil war to overthrow the oppressive regime of dictator Pagan Min. Explore and navigate this vast open world, where danger and unpredictability lurk around every corner. Here, every decision counts, and every second is a story. Welcome to Kyrat.",
                                category: category2)
-        gameData.saveData(game: game21)
+        gameData.saveData(game: game20)
     }
 }
