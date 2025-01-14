@@ -8,12 +8,12 @@
 import UIKit
 
 class GamePageCell: UITableViewCell {
-    @IBOutlet weak var titleImage: UIImageView!
-    @IBOutlet weak var gameName: UILabel!
-    @IBOutlet weak var aboutGame: UILabel!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet private weak var titleImage: UIImageView!
+    @IBOutlet private weak var gameName: UILabel!
+    @IBOutlet private weak var aboutGame: UILabel!
+    @IBOutlet private weak var likeButton: UIButton!
+    private var isLiked: Bool = false
     var likeAction: ((Bool) -> Void)?
-    var isLiked: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,9 +33,9 @@ class GamePageCell: UITableViewCell {
     }
     
     private func updateLikeButton() {
-            let imageName = isLiked ? "heart.fill" : "heart"
-            likeButton.setImage(UIImage(systemName: imageName), for: .normal)
-        }
+        let imageName = isLiked ? "heart.fill" : "heart"
+        likeButton.setImage(UIImage(systemName: imageName), for: .normal)
+    }
     
     func configure(item: Game) {
         titleImage.image = UIImage(named: item.customImage ?? "")

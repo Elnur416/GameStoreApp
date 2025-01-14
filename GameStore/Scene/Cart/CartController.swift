@@ -9,10 +9,10 @@ import UIKit
 
 class CartController: UIViewController {
     @IBOutlet private weak var table: UITableView!
-    @IBOutlet weak var totalPrice: UILabel!
-    @IBOutlet weak var confirmButton: UIButton!
-    let viewModel = CartViewModel()
-    let refreshControl = UIRefreshControl()
+    @IBOutlet private weak var totalPrice: UILabel!
+    @IBOutlet private weak var confirmButton: UIButton!
+    private let viewModel = CartViewModel()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class CartController: UIViewController {
         configureTotalPrice()
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         title = "Payment"
         table.dataSource = self
         table.delegate = self
@@ -39,7 +39,7 @@ class CartController: UIViewController {
         configureTotalPrice()
     }
     
-    func configureTotalPrice() {
+    private func configureTotalPrice() {
         let formattedPrice = String(format: "%.2f", viewModel.getTotalPrice())
         totalPrice.text = "\(formattedPrice)"
     }

@@ -15,7 +15,7 @@ class LoginController: UIViewController {
     @IBOutlet private weak var loginButton: UIButton!
     @IBOutlet private weak var signUpButton: UIButton!
     private let toggleButton = UIButton(type: .custom)
-    let viewModel = LoginViewModel()
+    private let viewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class LoginController: UIViewController {
         }
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         let gradient = UIImage.gImage(frame: label.bounds, colours: [.red, .blue])
         label.font = UIFont.boldSystemFont(ofSize: 35)
         label.textColor = UIColor(patternImage: gradient)
@@ -62,7 +62,7 @@ class LoginController: UIViewController {
         loginView.layer.cornerRadius = 30
     }
     
-    func configurePasswordTxt() {
+    private func configurePasswordTxt() {
         passwordTxt.isSecureTextEntry = true
         passwordTxt.borderStyle = .roundedRect
         toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
@@ -74,7 +74,7 @@ class LoginController: UIViewController {
         passwordTxt.rightViewMode = .always
     }
     
-    func errorHandler() {
+    private func errorHandler() {
         viewModel.error = {
             let alert = UIAlertController(title: "Error", message: "Account not found", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
@@ -82,7 +82,7 @@ class LoginController: UIViewController {
         }
     }
     
-    func successHandler() {
+    private func successHandler() {
         viewModel.success = {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
             guard let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }

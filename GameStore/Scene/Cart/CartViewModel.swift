@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 class CartViewModel {
-    let adapter = FileManagerForCart()
+    private let adapter = FileManagerForCart()
     var games = [GameForCart]()
     let manager = UserDefaultsManager()
-    var gamesOnCollection = [GameForCart]()
+    private var gamesOnCollection = [GameForCart]()
     
     func readData() {
         adapter.readData(fileName: .cart) { data in

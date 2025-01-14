@@ -28,7 +28,7 @@ class FirstController: UIViewController {
         navigationController?.show(controller, sender: nil)
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         navigationController?.navigationBar.tintColor = .white
         let gradient = UIImage.gImage(frame: label.bounds, colours: [.red, .blue])
         label.text = "Game Store"

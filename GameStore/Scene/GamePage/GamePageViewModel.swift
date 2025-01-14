@@ -10,10 +10,9 @@ import Foundation
 class GamePageViewModel {
     var selectedGame: Game?
     var selectedGameFromCart: GameForCart?
-    let managerGame = CoreDataForGame(context: AppDelegate().persistentContainer.viewContext)
-    let adapter = FileManagerForCart()
+    private let adapter = FileManagerForCart()
     var gamesForCart = [GameForCart]()
-    var gamesForWishlist = [GameForCart]()
+    private var gamesForWishlist = [GameForCart]()
     var gamesOnCollection = [GameForCart]()
     var isGameLiked: Bool?
     

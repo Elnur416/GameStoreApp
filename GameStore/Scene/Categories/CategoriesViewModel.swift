@@ -11,7 +11,6 @@ class CategoriesViewModel {
     var categories = [Category]()
     private let managerCategory = CoreDataForCategory(context: AppDelegate().persistentContainer.viewContext)
     private let gameDatas = GameDatas()
-    let manager = UserDefaultsManager()
     
     func fetchCategories() {
         managerCategory.fetchData { categories in

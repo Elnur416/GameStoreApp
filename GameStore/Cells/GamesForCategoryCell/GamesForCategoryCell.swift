@@ -8,9 +8,9 @@
 import UIKit
 
 class GamesForCategoryCell: UITableViewCell {
-    @IBOutlet weak var titleImage: UIImageView!
-    @IBOutlet weak var titleName: UILabel!
-    @IBOutlet weak var price: UILabel!
+    @IBOutlet private weak var titleImage: UIImageView!
+    @IBOutlet private weak var titleName: UILabel!
+    @IBOutlet private weak var price: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

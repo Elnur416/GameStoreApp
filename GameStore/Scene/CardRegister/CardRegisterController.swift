@@ -8,19 +8,18 @@
 import UIKit
 
 class CardRegisterController: UIViewController {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cardNumberTxt: UITextField!
-    @IBOutlet weak var expiryDateTxt: UITextField!
-    @IBOutlet weak var cvcTxt: UITextField!
-    @IBOutlet weak var submitButton: UIButton!
-    let datePicker = UIDatePicker()
-    let manager = UserDefaultsManager()
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var cardNumberTxt: UITextField!
+    @IBOutlet private weak var expiryDateTxt: UITextField!
+    @IBOutlet private weak var cvcTxt: UITextField!
+    @IBOutlet private weak var submitButton: UIButton!
+    private let datePicker = UIDatePicker()
+    private let manager = UserDefaultsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureUI()
-        expiryDateTxt.addTarget(self, action: #selector(pickDateOfBirth), for: .touchDown)
     }
     
     @IBAction func submitButtonAction(_ sender: Any) {
@@ -37,11 +36,12 @@ class CardRegisterController: UIViewController {
         dismiss(animated: true)
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         let gradient = UIImage.gImage(frame: titleLabel.bounds, colours: [.red, .blue])
         titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
         titleLabel.textColor = UIColor(patternImage: gradient)
         submitButton.tintColor = UIColor(patternImage: gradient)
+        expiryDateTxt.addTarget(self, action: #selector(pickDateOfBirth), for: .touchDown)
     }
     
     @objc func pickDateOfBirth() {

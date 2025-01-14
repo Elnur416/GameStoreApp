@@ -8,11 +8,11 @@
 import UIKit
 
 class ProfileController: UIViewController {
-    @IBOutlet weak var collection: UICollectionView!
-    @IBOutlet weak var fullname: UILabel!
-    @IBOutlet weak var phone: UILabel!
-    @IBOutlet weak var email: UILabel!
-    let viewModel = ProfileViewModel()
+    @IBOutlet private weak var collection: UICollectionView!
+    @IBOutlet private weak var fullname: UILabel!
+    @IBOutlet private weak var phone: UILabel!
+    @IBOutlet private weak var email: UILabel!
+    private let viewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +28,18 @@ class ProfileController: UIViewController {
         collection.reloadData()
     }
     
-    func configureUserData() {
+    private func configureUserData() {
         let index = viewModel.manager.getIndex(key: .getUserIndex)
         fullname.text = viewModel.users[index].fullname
         phone.text = viewModel.users[index].phone
         email.text = viewModel.users[index].email
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         title = "Profile"
         collection.dataSource = self
         collection.delegate = self
-        collection.register(UINib(nibName: "\(FooterCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(FooterCell.self)")
+        collection.register(UINib(nibName: "\(MainCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(MainCell.self)")
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 100, height: 180)
         layout.minimumLineSpacing = 20
@@ -56,7 +56,7 @@ extension ProfileController: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(FooterCell.self)", for: indexPath) as! FooterCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MainCell.self)", for: indexPath) as! MainCell
         cell.configureForProfile(item: viewModel.games[indexPath.row])
         return cell
     }

@@ -10,7 +10,7 @@ import Foundation
 class GamesForCategoryViewModel {
     var selectedCategory: String?
     var gamesForcategory = [Game]()
-    var allGames = [Game]()
+    private var allGames = [Game]()
     private let managerGame = CoreDataForGame(context: AppDelegate().persistentContainer.viewContext)
     
     func fetchGames() {

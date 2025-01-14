@@ -8,8 +8,8 @@
 import UIKit
 
 class CategoriesController: UIViewController {
-    @IBOutlet weak var collection: UICollectionView!
-    let viewModel = CategoriesViewModel()
+    @IBOutlet private weak var collection: UICollectionView!
+    private let viewModel = CategoriesViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class CategoriesController: UIViewController {
         viewModel.fetchCategories()
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         title = "Categories"
         collection.dataSource = self
         collection.delegate = self

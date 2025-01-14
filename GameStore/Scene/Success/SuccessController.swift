@@ -21,7 +21,7 @@ class SuccessController: UIViewController {
         dismiss(animated: true)
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         let gradient = UIImage.gImage(frame: titleLabel.bounds, colours: [.red, .blue])
         titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
         titleLabel.textColor = UIColor(patternImage: gradient)

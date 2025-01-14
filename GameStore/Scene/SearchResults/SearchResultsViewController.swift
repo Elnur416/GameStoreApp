@@ -9,22 +9,25 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
 
-    var tableView: UITableView!
-    var filteredData = [Game]()
-    var allData = [Game]()
+    private var tableView: UITableView!
+    private var filteredData = [Game]()
+    private var allData = [Game]()
     var itemSelection: ((Int) -> Void)?
     var filteredGames: (([Game]) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureUI()
+    }
+    
+    fileprivate func configureUI() {
         tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
         tableView.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
-        
     }
     
     func configure(items: [Game]) {

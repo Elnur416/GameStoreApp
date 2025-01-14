@@ -8,16 +8,14 @@
 import UIKit
 
 class CategoriesCell: UICollectionViewCell {
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var titleImage: UIImageView!
-    @IBOutlet weak var categoryName: UILabel!
+    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var titleImage: UIImageView!
+    @IBOutlet private weak var categoryName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        titleView.layer.cornerRadius = 30
-        titleImage.layer.cornerRadius = 30
-
+        configureUI()
     }
     
     func colorFromString(_ color: String) -> UIColor {
@@ -43,6 +41,11 @@ class CategoriesCell: UICollectionViewCell {
         }
     }
 
+    private func configureUI() {
+        titleView.layer.cornerRadius = 30
+        titleImage.layer.cornerRadius = 30
+    }
+    
     func configure(category: Category) {
         categoryName.text = category.name
         titleImage.image = UIImage(named: category.image!)

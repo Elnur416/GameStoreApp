@@ -8,9 +8,9 @@
 import UIKit
 
 class ExploreController: UIViewController {
-    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet private weak var collection: UICollectionView!
     private let searchController = UISearchController(searchResultsController: SearchResultsViewController())
-    let viewModel = ExploreViewModel()
+    private let viewModel = ExploreViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,19 +24,17 @@ class ExploreController: UIViewController {
         collection.dataSource = self
         collection.delegate = self
         collection.register(UINib(nibName: "\(Header1View.self)", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "\(Header1View.self)")
-        collection.register(UINib(nibName: "\(FooterCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(FooterCell.self)")
-        
+        collection.register(UINib(nibName: "\(MainCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(MainCell.self)")
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 200, height: 400)
         layout.sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 0, right: 20)
         collection.collectionViewLayout = layout
-        
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search Items"
         navigationItem.searchController = searchController
     }
     
-    func loadData() {
+    private func loadData() {
         if viewModel.manager.getBool(key: .isDataLoaded) {
             return
         } else {
@@ -53,7 +51,7 @@ extension ExploreController: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FooterCell", for: indexPath) as! FooterCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MainCell.self)", for: indexPath) as! MainCell
         cell.configure(item: viewModel.games[indexPath.row])
         return cell
     }
@@ -97,7 +95,7 @@ extension ExploreController: UISearchResultsUpdating {
                 }
                 controller.itemSelection = { index in
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "\(GamePageController.self)") as!
-                     GamePageController
+                    GamePageController
                     vc.viewModel.selectedGame = self.viewModel.filteredGames[index]
                     self.navigationController?.show(vc, sender: nil)
                 }

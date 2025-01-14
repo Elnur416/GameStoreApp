@@ -8,10 +8,10 @@
 import UIKit
 
 class GamePageController: UIViewController {
-    @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var buyView: UIView!
-    @IBOutlet weak var addCartButton: UIButton!
+    @IBOutlet private weak var table: UITableView!
+    @IBOutlet private weak var price: UILabel!
+    @IBOutlet private weak var buyView: UIView!
+    @IBOutlet private weak var addCartButton: UIButton!
     let viewModel = GamePageViewModel()
     
     override func viewDidLoad() {
@@ -61,7 +61,7 @@ class GamePageController: UIViewController {
         }
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "\(GamePageCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamePageCell.self)")
@@ -72,6 +72,7 @@ class GamePageController: UIViewController {
         }
         let gradient = UIImage.gImage(frame: addCartButton.bounds, colours: [.red, .blue])
         addCartButton.tintColor = UIColor(patternImage: gradient)
+        navigationController?.navigationBar.tintColor = .white
     }
 }
 

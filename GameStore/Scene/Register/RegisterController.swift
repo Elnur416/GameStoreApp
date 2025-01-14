@@ -8,16 +8,16 @@
 import UIKit
 
 class RegisterController: UIViewController {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var registerView: UIView!
-    @IBOutlet weak var fullnameTxt: UITextField!
-    @IBOutlet weak var phoneTxt: UITextField!
-    @IBOutlet weak var emailTxt: UITextField!
-    @IBOutlet weak var passwordTxt: UITextField!
-    @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet private weak var label: UILabel!
+    @IBOutlet private weak var registerView: UIView!
+    @IBOutlet private weak var fullnameTxt: UITextField!
+    @IBOutlet private weak var phoneTxt: UITextField!
+    @IBOutlet private weak var emailTxt: UITextField!
+    @IBOutlet private weak var passwordTxt: UITextField!
+    @IBOutlet private weak var registerButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
     private let toggleButton = UIButton(type: .custom)
-    let viewModel = RegisterViewModel()
+    private let viewModel = RegisterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class RegisterController: UIViewController {
         }
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         let gradient = UIImage.gImage(frame: label.bounds, colours: [.red, .blue])
         label.font = UIFont.boldSystemFont(ofSize: 35)
         label.textColor = UIColor(patternImage: gradient)
@@ -72,7 +72,7 @@ class RegisterController: UIViewController {
         registerView.layer.cornerRadius = 30
     }
     
-    func configurePasswordTxt() {
+    private func configurePasswordTxt() {
         passwordTxt.isSecureTextEntry = true
         passwordTxt.borderStyle = .roundedRect
         toggleButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
@@ -84,7 +84,7 @@ class RegisterController: UIViewController {
         passwordTxt.rightViewMode = .always
     }
     
-    func errorHandler() {
+    private func errorHandler() {
         viewModel.error = {
             let alert = UIAlertController(title: "Error", message: "Account already exists", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))

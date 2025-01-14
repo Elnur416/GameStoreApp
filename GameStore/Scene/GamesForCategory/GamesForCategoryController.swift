@@ -8,7 +8,7 @@
 import UIKit
 
 class GamesForCategoryController: UIViewController {
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet private weak var table: UITableView!
     let viewModel = GamesForCategoryViewModel()
     
     override func viewDidLoad() {
@@ -19,10 +19,11 @@ class GamesForCategoryController: UIViewController {
         viewModel.getGamesForCategory()
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
+        navigationController?.navigationBar.tintColor = .white
     }
 }
 

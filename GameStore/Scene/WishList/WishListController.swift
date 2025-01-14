@@ -8,9 +8,9 @@
 import UIKit
 
 class WishListController: UIViewController {
-    @IBOutlet weak var table: UITableView!
-    let viewModel = WishListViewModel()
-    let refreshControl = UIRefreshControl()
+    @IBOutlet private weak var table: UITableView!
+    private let viewModel = WishListViewModel()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,11 @@ class WishListController: UIViewController {
         table.reloadData()
     }
     
-    func configureUI() {
+    fileprivate func configureUI() {
         title = "WishList"
-         table.dataSource = self
-         table.delegate = self
-         table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
+        table.dataSource = self
+        table.delegate = self
+        table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
     }
 }
 

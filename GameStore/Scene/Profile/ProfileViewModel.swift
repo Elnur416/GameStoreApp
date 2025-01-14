@@ -8,8 +8,8 @@
 import Foundation
 
 class ProfileViewModel {
-    let adapter = FileManagerHelper()
-    let adapterGame = FileManagerForCart()
+    private let adapter = FileManagerHelper()
+    private let adapterGame = FileManagerForCart()
     var games = [GameForCart]()
     var users = [User]()
     let manager = UserDefaultsManager()

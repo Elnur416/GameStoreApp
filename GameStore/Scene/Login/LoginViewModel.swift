@@ -22,7 +22,7 @@ class LoginViewModel {
     
     func checkUser(email: String, password: String) {
         if users.contains(where: { $0.email == email && $0.password == password}) {
-        success?()
+            success?()
         } else {
             error?()
         }

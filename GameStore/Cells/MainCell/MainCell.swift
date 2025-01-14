@@ -1,16 +1,16 @@
 //
-//  FooterCell.swift
+//  MainCell.swift
 //  GameStore
 //
-//  Created by Elnur Mammadov on 02.01.25.
+//  Created by Elnur Mammadov on 14.01.25.
 //
 
 import UIKit
 
-class FooterCell: UICollectionViewCell {
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var titleImage: UIImageView!
-    @IBOutlet weak var titlePrice: UILabel!
+class MainCell: UICollectionViewCell {
+    @IBOutlet private weak var titleView: UIView!
+    @IBOutlet private weak var titlePrice: UILabel!
+    @IBOutlet private weak var titleImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,15 +24,14 @@ class FooterCell: UICollectionViewCell {
         let gradient = UIImage.gImage(frame: titleView.bounds, colours: [.red, .blue])
         titleView.backgroundColor = UIColor(patternImage: gradient)
     }
-    
+
     func configure(item: Game) {
         titleImage.image = UIImage(named: item.mainImage!)
         titlePrice.text = "\(item.price)"
-        }
+    }
     
     func configureForProfile(item: GameForCart) {
         titleImage.image = UIImage(named: item.mainImage!)
         titlePrice.text = "\(item.price ?? 0)"
     }
 }
-
