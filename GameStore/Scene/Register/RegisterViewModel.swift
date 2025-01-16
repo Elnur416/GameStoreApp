@@ -24,12 +24,14 @@ class RegisterViewModel {
             error?()
         } else {
             users.append(user)
+            guard let index = users.firstIndex(where: { $0.email == user.email && $0.password == user.password }) else { return }
+            manager.setValue(value: index, key: .getUserIndex)
             adapter.writeData(user: users)
         }
     }
     
-    func getUserIndex(email: String, password: String) {
-        guard let index = users.firstIndex(where: { $0.email == email && $0.password == password }) else { return }
-        manager.setValue(value: index, key: .getUserIndex)
-    }
+//    func getUserIndex(email: String, password: String) {
+//        guard let index = users.firstIndex(where: { $0.email == email && $0.password == password }) else { return }
+//        manager.setValue(value: index, key: .getUserIndex)
+//    }
 }

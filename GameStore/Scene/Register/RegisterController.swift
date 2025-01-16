@@ -45,7 +45,7 @@ class RegisterController: UIViewController {
         
         let user = User(fullname: fullname, phone: phone, email: email, password: password)
         viewModel.manager.setValue(value: true, key: .isLoggedIn)
-        viewModel.getUserIndex(email: email, password: password)
+//        viewModel.getUserIndex(email: email, password: password)
         viewModel.writeData(user: user)
     }
     

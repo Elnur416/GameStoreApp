@@ -12,6 +12,7 @@ class ProfileController: UIViewController {
     @IBOutlet private weak var fullname: UILabel!
     @IBOutlet private weak var phone: UILabel!
     @IBOutlet private weak var email: UILabel!
+    @IBOutlet weak var logOutButton: UIButton!
     private let viewModel = ProfileViewModel()
     
     override func viewDidLoad() {
@@ -26,6 +27,12 @@ class ProfileController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         viewModel.readGameData()
         collection.reloadData()
+    }
+    
+    @IBAction func logOutButtonAction(_ sender: Any) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
+        sceneDelegate.firstRoot()
     }
     
     private func configureUserData() {

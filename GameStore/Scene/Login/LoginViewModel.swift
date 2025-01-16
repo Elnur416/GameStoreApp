@@ -22,6 +22,8 @@ class LoginViewModel {
     
     func checkUser(email: String, password: String) {
         if users.contains(where: { $0.email == email && $0.password == password}) {
+            guard let index = users.firstIndex(where: { $0.email == email && $0.password == password }) else { return }
+            manager.setValue(value: index, key: .getUserIndex)
             success?()
         } else {
             error?()
