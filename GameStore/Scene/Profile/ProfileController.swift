@@ -30,6 +30,7 @@ class ProfileController: UIViewController {
     }
     
     @IBAction func logOutButtonAction(_ sender: Any) {
+        viewModel.manager.setValue(value: false, key: .isLoggedIn)
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
         guard let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
         sceneDelegate.firstRoot()
