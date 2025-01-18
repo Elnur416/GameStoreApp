@@ -23,6 +23,12 @@ class GamePageController: UIViewController {
         viewModel.readDataFromCollection()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.readData()
+        viewModel.readDataForWishlist()
+        viewModel.readDataFromCollection()
+    }
+    
     @IBAction func addCartButtonAction(_ sender: UIButton) {
         if viewModel.selectedGame != nil {
             if viewModel.gamesForCart.contains(viewModel.convertModel(game: viewModel.selectedGame!)) {
