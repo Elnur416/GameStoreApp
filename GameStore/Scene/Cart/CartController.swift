@@ -22,13 +22,6 @@ class CartController: UIViewController {
         viewModel.readFromCollection()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        viewModel.readData()
-        viewModel.readFromCollection()
-        table.reloadData()
-        configureTotalPrice()
-    }
-    
     fileprivate func configureUI() {
         title = "Payment"
         table.dataSource = self
@@ -37,6 +30,16 @@ class CartController: UIViewController {
         let gradient = UIImage.gImage(frame: confirmButton.bounds, colours: [.red, .blue])
         confirmButton.tintColor = UIColor(patternImage: gradient)
         configureTotalPrice()
+        table.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+    }
+    
+    @objc private func refreshAction() {
+        viewModel.readData()
+        viewModel.readFromCollection()
+        table.reloadData()
+        configureTotalPrice()
+        refreshControl.endRefreshing()
     }
     
     private func configureTotalPrice() {

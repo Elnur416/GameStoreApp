@@ -19,16 +19,19 @@ class WishListController: UIViewController {
         viewModel.readData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        viewModel.readData()
-        table.reloadData()
-    }
-    
     fileprivate func configureUI() {
         title = "WishList"
         table.dataSource = self
         table.delegate = self
         table.register(UINib(nibName: "\(GamesForCategoryCell.self)", bundle: nil), forCellReuseIdentifier: "\(GamesForCategoryCell.self)")
+        table.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
+    }
+    
+    @objc private func refreshAction() {
+        viewModel.readData()
+        table.reloadData()
+        refreshControl.endRefreshing()
     }
 }
 
